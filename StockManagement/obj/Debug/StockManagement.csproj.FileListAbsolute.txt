@@ -1,0 +1,59 @@
+C:\Users\MEHEDI HASAN\source\repos\StockManagement\StockManagement\bin\Debug\StockManagement.exe.config
+C:\Users\MEHEDI HASAN\source\repos\StockManagement\StockManagement\bin\Debug\StockManagement.exe
+C:\Users\MEHEDI HASAN\source\repos\StockManagement\StockManagement\bin\Debug\StockManagement.pdb
+C:\Users\MEHEDI HASAN\source\repos\StockManagement\StockManagement\obj\Debug\StockManagement.Dashboard.resources
+C:\Users\MEHEDI HASAN\source\repos\StockManagement\StockManagement\obj\Debug\StockManagement.Properties.Resources.resources
+C:\Users\MEHEDI HASAN\source\repos\StockManagement\StockManagement\obj\Debug\StockManagement.csproj.GenerateResource.cache
+C:\Users\MEHEDI HASAN\source\repos\StockManagement\StockManagement\obj\Debug\StockManagement.csproj.CoreCompileInputs.cache
+C:\Users\MEHEDI HASAN\source\repos\StockManagement\StockManagement\obj\Debug\StockManagement.exe
+C:\Users\MEHEDI HASAN\source\repos\StockManagement\StockManagement\obj\Debug\StockManagement.pdb
+C:\Users\MEHEDI HASAN\source\repos\StockManagement\StockManagement\bin\Debug\Guna.UI.dll
+C:\Users\MEHEDI HASAN\source\repos\StockManagement\StockManagement\obj\Debug\StockManagement.csproj.CopyComplete
+C:\Users\MEHEDI HASAN\source\repos\StockManagement\StockManagement\obj\Debug\StockManagement.csprojAssemblyReference.cache
+C:\Users\MEHEDI HASAN\source\repos\StockManagement\StockManagement\obj\Debug\StockManagement.Design.DashboardUserControl.resources
+C:\Users\MEHEDI HASAN\source\repos\StockManagement\StockManagement\obj\Debug\StockManagement.Design.ProductUserControl.resources
+C:\Users\MEHEDI HASAN\source\repos\StockManagement\StockManagement\obj\Debug\StockManagement.Design.CategoryUserControl.resources
+C:\Users\MEHEDI HASAN\source\repos\StockManagement\StockManagement\obj\Debug\StockManagement.Design.CustomerUserControl.resources
+C:\Users\MEHEDI HASAN\source\repos\StockManagement\StockManagement\obj\Debug\StockManagement.Design.SupplierUserControl.resources
+D:\GitHubProject\StockManagement\StockManagement\bin\Debug\StockManagement.exe.config
+D:\GitHubProject\StockManagement\StockManagement\bin\Debug\StockManagement.exe
+D:\GitHubProject\StockManagement\StockManagement\bin\Debug\StockManagement.pdb
+D:\GitHubProject\StockManagement\StockManagement\obj\Debug\StockManagement.Dashboard.resources
+D:\GitHubProject\StockManagement\StockManagement\obj\Debug\StockManagement.Design.CategoryUserControl.resources
+D:\GitHubProject\StockManagement\StockManagement\obj\Debug\StockManagement.Design.CustomerUserControl.resources
+D:\GitHubProject\StockManagement\StockManagement\obj\Debug\StockManagement.Design.DashboardUserControl.resources
+D:\GitHubProject\StockManagement\StockManagement\obj\Debug\StockManagement.Design.OrderProductUserControl.resources
+D:\GitHubProject\StockManagement\StockManagement\obj\Debug\StockManagement.Design.ProductUserControl.resources
+D:\GitHubProject\StockManagement\StockManagement\obj\Debug\StockManagement.Design.PurchaseUserControl.resources
+D:\GitHubProject\StockManagement\StockManagement\obj\Debug\StockManagement.Design.SalesUserControl.resources
+D:\GitHubProject\StockManagement\StockManagement\obj\Debug\StockManagement.Design.StockOut.resources
+D:\GitHubProject\StockManagement\StockManagement\obj\Debug\StockManagement.Design.StockUserControl.resources
+D:\GitHubProject\StockManagement\StockManagement\obj\Debug\StockManagement.Design.SupplierUserControl.resources
+D:\GitHubProject\StockManagement\StockManagement\obj\Debug\StockManagement.Properties.Resources.resources
+D:\GitHubProject\StockManagement\StockManagement\obj\Debug\StockManagement.csproj.GenerateResource.cache
+D:\GitHubProject\StockManagement\StockManagement\obj\Debug\StockManagement.csproj.CoreCompileInputs.cache
+D:\GitHubProject\StockManagement\StockManagement\obj\Debug\StockManagement.csproj.CopyComplete
+D:\GitHubProject\StockManagement\StockManagement\obj\Debug\StockManagement.exe
+D:\GitHubProject\StockManagement\StockManagement\obj\Debug\StockManagement.pdb
+C:\Users\Web App Develop .Net\Desktop\Day18\StockManagement\StockManagement\obj\Debug\StockManagement.csprojAssemblyReference.cache
+C:\Users\Web App Develop .Net\Desktop\Day18\StockManagement\StockManagement\obj\Debug\StockManagement.Dashboard.resources
+C:\Users\Web App Develop .Net\Desktop\Day18\StockManagement\StockManagement\obj\Debug\StockManagement.Design.CategoryUserControl.resources
+C:\Users\Web App Develop .Net\Desktop\Day18\StockManagement\StockManagement\obj\Debug\StockManagement.Design.CustomerUserControl.resources
+C:\Users\Web App Develop .Net\Desktop\Day18\StockManagement\StockManagement\obj\Debug\StockManagement.Design.DashboardUserControl.resources
+C:\Users\Web App Develop .Net\Desktop\Day18\StockManagement\StockManagement\obj\Debug\StockManagement.Design.OrderProductUserControl.resources
+C:\Users\Web App Develop .Net\Desktop\Day18\StockManagement\StockManagement\obj\Debug\StockManagement.Design.ProductUserControl.resources
+C:\Users\Web App Develop .Net\Desktop\Day18\StockManagement\StockManagement\obj\Debug\StockManagement.Design.PurchaseUserControl.resources
+C:\Users\Web App Develop .Net\Desktop\Day18\StockManagement\StockManagement\obj\Debug\StockManagement.Design.SalesUserControl.resources
+C:\Users\Web App Develop .Net\Desktop\Day18\StockManagement\StockManagement\obj\Debug\StockManagement.Design.StockOut.resources
+C:\Users\Web App Develop .Net\Desktop\Day18\StockManagement\StockManagement\obj\Debug\StockManagement.Design.StockUserControl.resources
+C:\Users\Web App Develop .Net\Desktop\Day18\StockManagement\StockManagement\obj\Debug\StockManagement.Design.SupplierUserControl.resources
+C:\Users\Web App Develop .Net\Desktop\Day18\StockManagement\StockManagement\obj\Debug\StockManagement.Properties.Resources.resources
+C:\Users\Web App Develop .Net\Desktop\Day18\StockManagement\StockManagement\obj\Debug\StockManagement.csproj.GenerateResource.cache
+C:\Users\Web App Develop .Net\Desktop\Day18\StockManagement\StockManagement\obj\Debug\StockManagement.csproj.CoreCompileInputs.cache
+C:\Users\Web App Develop .Net\Desktop\Day18\StockManagement\StockManagement\obj\Debug\StockManagement.exe
+C:\Users\Web App Develop .Net\Desktop\Day18\StockManagement\StockManagement\obj\Debug\StockManagement.pdb
+C:\Users\Web App Develop .Net\Desktop\Day18\StockManagement\StockManagement\bin\Debug\StockManagement.exe.config
+C:\Users\Web App Develop .Net\Desktop\Day18\StockManagement\StockManagement\bin\Debug\StockManagement.exe
+C:\Users\Web App Develop .Net\Desktop\Day18\StockManagement\StockManagement\bin\Debug\StockManagement.pdb
+C:\Users\Web App Develop .Net\Desktop\Day18\StockManagement\StockManagement\obj\Debug\StockManagement.csproj.CopyComplete
+D:\GitHubProject\StockManagement\StockManagement\obj\Debug\StockManagement.csprojAssemblyReference.cache
