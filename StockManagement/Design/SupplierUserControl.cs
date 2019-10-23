@@ -20,6 +20,7 @@ namespace StockManagement.Design
         public SupplierUserControl()
         {
             InitializeComponent();
+            showDataGridView.DataSource = _supplierManager.Display();
         }
 
         private void saveButton_Click(object sender, EventArgs e)
@@ -36,5 +37,6 @@ namespace StockManagement.Design
                 MessageBox.Show("Supplier Added Failed!", "Add Supplier", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
     }
 }

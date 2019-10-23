@@ -63,6 +63,7 @@ namespace StockManagement.Repository
 
             return customers;
         }
+
         public List<Customer> SearchByName(string searchKeyword)
         {
             List<Customer> customers = new List<Customer>();
@@ -87,6 +88,41 @@ namespace StockManagement.Repository
 
                customers.Add(customer);
             }
+
+            sqlConnection.Close();
+
+            return customers;
+        }
+
+        public List<Customer> CustomerComboItem()
+        {
+            List<Customer> customers = new List<Customer>();
+
+            string commandString = @"SELECT ID, Name FROM Customers";
+            ConnectionDB connection = new ConnectionDB();
+            sqlConnection = connection.CreateConnection();
+
+            SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
+
+            sqlConnection.Open();
+
+            SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+
+            while (sqlDataReader.Read())
+            {
+                Customer customer = new Customer();
+
+                customer.ID = Convert.ToInt32(sqlDataReader["ID"]);
+                customer.Name = sqlDataReader["Name"].ToString();
+
+                customers.Add(customer);
+            }
+
+            Customer cus = new Customer();
+            cus.ID = 0;
+            cus.Name = "-SELECT-";
+
+            customers.Insert(0, cus);
 
             sqlConnection.Close();
 

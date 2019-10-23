@@ -28,19 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.purchaseDatePicker = new System.Windows.Forms.DateTimePicker();
+            this.customerComboBox = new System.Windows.Forms.ComboBox();
+            this.customerBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.saleDatePicker = new System.Windows.Forms.DateTimePicker();
             this.loyalityPointTextBox = new Guna.UI.WinForms.GunaTextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.customerComboBox = new Guna.UI.WinForms.GunaComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.customerErrorLabel = new System.Windows.Forms.Label();
             this.purchaseDateErrorlabel = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.productComboBox = new System.Windows.Forms.ComboBox();
+            this.categoryComboBox = new System.Windows.Forms.ComboBox();
             this.addButton = new Guna.UI.WinForms.GunaButton();
             this.totalMRPTextBox = new Guna.UI.WinForms.GunaTextBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -50,9 +54,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.availableQuantityTextBox = new Guna.UI.WinForms.GunaTextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.categoryComboBox = new Guna.UI.WinForms.GunaComboBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.productComboBox = new Guna.UI.WinForms.GunaComboBox();
             this.categoryErrorLabel = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.quantityErrorLabel = new System.Windows.Forms.Label();
@@ -68,20 +70,26 @@
             this.grandTotalTextBox = new Guna.UI.WinForms.GunaTextBox();
             this.gunaLabel1 = new Guna.UI.WinForms.GunaLabel();
             this.showDataGridView = new Guna.UI.WinForms.GunaDataGridView();
-            this.SL = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Action = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.customerIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.saleBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.showDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.saleBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.purchaseDatePicker);
+            this.groupBox1.Controls.Add(this.customerComboBox);
+            this.groupBox1.Controls.Add(this.saleDatePicker);
             this.groupBox1.Controls.Add(this.loyalityPointTextBox);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.customerComboBox);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.customerErrorLabel);
@@ -89,19 +97,35 @@
             this.groupBox1.Location = new System.Drawing.Point(21, 68);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(318, 153);
-            this.groupBox1.TabIndex = 1;
+            this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Customer";
             // 
-            // purchaseDatePicker
+            // customerComboBox
             // 
-            this.purchaseDatePicker.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.purchaseDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.purchaseDatePicker.Location = new System.Drawing.Point(109, 34);
-            this.purchaseDatePicker.Name = "purchaseDatePicker";
-            this.purchaseDatePicker.Size = new System.Drawing.Size(175, 25);
-            this.purchaseDatePicker.TabIndex = 3;
-            this.purchaseDatePicker.Value = new System.DateTime(2019, 10, 17, 0, 0, 0, 0);
+            this.customerComboBox.DataSource = this.customerBindingSource;
+            this.customerComboBox.DisplayMember = "Name";
+            this.customerComboBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.customerComboBox.FormattingEnabled = true;
+            this.customerComboBox.Location = new System.Drawing.Point(107, 74);
+            this.customerComboBox.Name = "customerComboBox";
+            this.customerComboBox.Size = new System.Drawing.Size(177, 23);
+            this.customerComboBox.TabIndex = 1;
+            this.customerComboBox.ValueMember = "ID";
+            // 
+            // customerBindingSource
+            // 
+            this.customerBindingSource.DataSource = typeof(StockManagement.Model.Customer);
+            // 
+            // saleDatePicker
+            // 
+            this.saleDatePicker.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.saleDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.saleDatePicker.Location = new System.Drawing.Point(109, 34);
+            this.saleDatePicker.Name = "saleDatePicker";
+            this.saleDatePicker.Size = new System.Drawing.Size(175, 25);
+            this.saleDatePicker.TabIndex = 0;
+            this.saleDatePicker.Value = new System.DateTime(2019, 10, 17, 0, 0, 0, 0);
             // 
             // loyalityPointTextBox
             // 
@@ -109,6 +133,7 @@
             this.loyalityPointTextBox.BorderColor = System.Drawing.Color.Silver;
             this.loyalityPointTextBox.BorderSize = 1;
             this.loyalityPointTextBox.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.loyalityPointTextBox.Enabled = false;
             this.loyalityPointTextBox.FocusedBaseColor = System.Drawing.Color.White;
             this.loyalityPointTextBox.FocusedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(181)))));
             this.loyalityPointTextBox.FocusedForeColor = System.Drawing.SystemColors.ControlText;
@@ -127,25 +152,6 @@
             this.label2.Size = new System.Drawing.Size(69, 13);
             this.label2.TabIndex = 1;
             this.label2.Text = "Loyality Point";
-            // 
-            // customerComboBox
-            // 
-            this.customerComboBox.BackColor = System.Drawing.Color.Transparent;
-            this.customerComboBox.BaseColor = System.Drawing.Color.White;
-            this.customerComboBox.BorderColor = System.Drawing.Color.Silver;
-            this.customerComboBox.BorderSize = 1;
-            this.customerComboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.customerComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.customerComboBox.FocusedColor = System.Drawing.Color.Empty;
-            this.customerComboBox.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.customerComboBox.ForeColor = System.Drawing.Color.Black;
-            this.customerComboBox.FormattingEnabled = true;
-            this.customerComboBox.Location = new System.Drawing.Point(109, 71);
-            this.customerComboBox.Name = "customerComboBox";
-            this.customerComboBox.OnHoverItemBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(181)))));
-            this.customerComboBox.OnHoverItemForeColor = System.Drawing.Color.White;
-            this.customerComboBox.Size = new System.Drawing.Size(175, 26);
-            this.customerComboBox.TabIndex = 2;
             // 
             // label3
             // 
@@ -189,6 +195,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.productComboBox);
+            this.groupBox2.Controls.Add(this.categoryComboBox);
             this.groupBox2.Controls.Add(this.addButton);
             this.groupBox2.Controls.Add(this.totalMRPTextBox);
             this.groupBox2.Controls.Add(this.label11);
@@ -198,9 +206,7 @@
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.availableQuantityTextBox);
             this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.categoryComboBox);
             this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.productComboBox);
             this.groupBox2.Controls.Add(this.categoryErrorLabel);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.quantityErrorLabel);
@@ -211,6 +217,30 @@
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Product";
+            // 
+            // productComboBox
+            // 
+            this.productComboBox.DisplayMember = "Name";
+            this.productComboBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.productComboBox.FormattingEnabled = true;
+            this.productComboBox.Location = new System.Drawing.Point(109, 58);
+            this.productComboBox.Name = "productComboBox";
+            this.productComboBox.Size = new System.Drawing.Size(177, 23);
+            this.productComboBox.TabIndex = 3;
+            this.productComboBox.ValueMember = "ID";
+            this.productComboBox.TextChanged += new System.EventHandler(this.productComboBox_TextChanged);
+            // 
+            // categoryComboBox
+            // 
+            this.categoryComboBox.DisplayMember = "Name";
+            this.categoryComboBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.categoryComboBox.FormattingEnabled = true;
+            this.categoryComboBox.Location = new System.Drawing.Point(109, 15);
+            this.categoryComboBox.Name = "categoryComboBox";
+            this.categoryComboBox.Size = new System.Drawing.Size(177, 23);
+            this.categoryComboBox.TabIndex = 2;
+            this.categoryComboBox.ValueMember = "ID";
+            this.categoryComboBox.TextChanged += new System.EventHandler(this.categoryComboBox_TextChanged);
             // 
             // addButton
             // 
@@ -233,9 +263,10 @@
             this.addButton.OnPressedColor = System.Drawing.Color.Black;
             this.addButton.Radius = 15;
             this.addButton.Size = new System.Drawing.Size(125, 34);
-            this.addButton.TabIndex = 4;
+            this.addButton.TabIndex = 5;
             this.addButton.Text = "Add";
             this.addButton.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
             // totalMRPTextBox
             // 
@@ -243,6 +274,7 @@
             this.totalMRPTextBox.BorderColor = System.Drawing.Color.Silver;
             this.totalMRPTextBox.BorderSize = 1;
             this.totalMRPTextBox.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.totalMRPTextBox.Enabled = false;
             this.totalMRPTextBox.FocusedBaseColor = System.Drawing.Color.White;
             this.totalMRPTextBox.FocusedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(181)))));
             this.totalMRPTextBox.FocusedForeColor = System.Drawing.SystemColors.ControlText;
@@ -260,7 +292,7 @@
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(83, 13);
             this.label11.TabIndex = 1;
-            this.label11.Text = "Total MRP (Tk.)";
+            this.label11.Text = "Total Price (Tk.)";
             // 
             // MRPTextBox
             // 
@@ -268,6 +300,7 @@
             this.MRPTextBox.BorderColor = System.Drawing.Color.Silver;
             this.MRPTextBox.BorderSize = 1;
             this.MRPTextBox.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.MRPTextBox.Enabled = false;
             this.MRPTextBox.FocusedBaseColor = System.Drawing.Color.White;
             this.MRPTextBox.FocusedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(181)))));
             this.MRPTextBox.FocusedForeColor = System.Drawing.SystemColors.ControlText;
@@ -285,7 +318,7 @@
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(56, 13);
             this.label10.TabIndex = 1;
-            this.label10.Text = "MRP (Tk.)";
+            this.label10.Text = "Price (Tk.)";
             // 
             // quantityTextBox
             // 
@@ -301,7 +334,8 @@
             this.quantityTextBox.Name = "quantityTextBox";
             this.quantityTextBox.PasswordChar = '\0';
             this.quantityTextBox.Size = new System.Drawing.Size(175, 26);
-            this.quantityTextBox.TabIndex = 0;
+            this.quantityTextBox.TabIndex = 4;
+            this.quantityTextBox.Leave += new System.EventHandler(this.quantityTextBox_Leave);
             // 
             // label9
             // 
@@ -318,6 +352,7 @@
             this.availableQuantityTextBox.BorderColor = System.Drawing.Color.Silver;
             this.availableQuantityTextBox.BorderSize = 1;
             this.availableQuantityTextBox.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.availableQuantityTextBox.Enabled = false;
             this.availableQuantityTextBox.FocusedBaseColor = System.Drawing.Color.White;
             this.availableQuantityTextBox.FocusedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(181)))));
             this.availableQuantityTextBox.FocusedForeColor = System.Drawing.SystemColors.ControlText;
@@ -337,25 +372,6 @@
             this.label4.TabIndex = 1;
             this.label4.Text = "Available Quantity";
             // 
-            // categoryComboBox
-            // 
-            this.categoryComboBox.BackColor = System.Drawing.Color.Transparent;
-            this.categoryComboBox.BaseColor = System.Drawing.Color.White;
-            this.categoryComboBox.BorderColor = System.Drawing.Color.Silver;
-            this.categoryComboBox.BorderSize = 1;
-            this.categoryComboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.categoryComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.categoryComboBox.FocusedColor = System.Drawing.Color.Empty;
-            this.categoryComboBox.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.categoryComboBox.ForeColor = System.Drawing.Color.Black;
-            this.categoryComboBox.FormattingEnabled = true;
-            this.categoryComboBox.Location = new System.Drawing.Point(109, 19);
-            this.categoryComboBox.Name = "categoryComboBox";
-            this.categoryComboBox.OnHoverItemBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(181)))));
-            this.categoryComboBox.OnHoverItemForeColor = System.Drawing.Color.White;
-            this.categoryComboBox.Size = new System.Drawing.Size(175, 26);
-            this.categoryComboBox.TabIndex = 2;
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -365,31 +381,12 @@
             this.label8.TabIndex = 1;
             this.label8.Text = "Category";
             // 
-            // productComboBox
-            // 
-            this.productComboBox.BackColor = System.Drawing.Color.Transparent;
-            this.productComboBox.BaseColor = System.Drawing.Color.White;
-            this.productComboBox.BorderColor = System.Drawing.Color.Silver;
-            this.productComboBox.BorderSize = 1;
-            this.productComboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.productComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.productComboBox.FocusedColor = System.Drawing.Color.Empty;
-            this.productComboBox.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.productComboBox.ForeColor = System.Drawing.Color.Black;
-            this.productComboBox.FormattingEnabled = true;
-            this.productComboBox.Location = new System.Drawing.Point(109, 59);
-            this.productComboBox.Name = "productComboBox";
-            this.productComboBox.OnHoverItemBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(181)))));
-            this.productComboBox.OnHoverItemForeColor = System.Drawing.Color.White;
-            this.productComboBox.Size = new System.Drawing.Size(175, 26);
-            this.productComboBox.TabIndex = 2;
-            // 
             // categoryErrorLabel
             // 
             this.categoryErrorLabel.AutoSize = true;
             this.categoryErrorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.categoryErrorLabel.ForeColor = System.Drawing.Color.Red;
-            this.categoryErrorLabel.Location = new System.Drawing.Point(107, 44);
+            this.categoryErrorLabel.Location = new System.Drawing.Point(107, 38);
             this.categoryErrorLabel.Name = "categoryErrorLabel";
             this.categoryErrorLabel.Size = new System.Drawing.Size(119, 13);
             this.categoryErrorLabel.TabIndex = 1;
@@ -466,7 +463,7 @@
             this.submitButton.OnPressedColor = System.Drawing.Color.Black;
             this.submitButton.Radius = 15;
             this.submitButton.Size = new System.Drawing.Size(125, 34);
-            this.submitButton.TabIndex = 4;
+            this.submitButton.TabIndex = 7;
             this.submitButton.Text = "Submit";
             this.submitButton.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -476,6 +473,7 @@
             this.payableAmountTextBox.BorderColor = System.Drawing.Color.Silver;
             this.payableAmountTextBox.BorderSize = 1;
             this.payableAmountTextBox.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.payableAmountTextBox.Enabled = false;
             this.payableAmountTextBox.FocusedBaseColor = System.Drawing.Color.White;
             this.payableAmountTextBox.FocusedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(181)))));
             this.payableAmountTextBox.FocusedForeColor = System.Drawing.SystemColors.ControlText;
@@ -502,6 +500,7 @@
             this.discountAmountTextBox.BorderColor = System.Drawing.Color.Silver;
             this.discountAmountTextBox.BorderSize = 1;
             this.discountAmountTextBox.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.discountAmountTextBox.Enabled = false;
             this.discountAmountTextBox.FocusedBaseColor = System.Drawing.Color.White;
             this.discountAmountTextBox.FocusedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(181)))));
             this.discountAmountTextBox.FocusedForeColor = System.Drawing.SystemColors.ControlText;
@@ -536,7 +535,7 @@
             this.discountPercentageTextBox.Name = "discountPercentageTextBox";
             this.discountPercentageTextBox.PasswordChar = '\0';
             this.discountPercentageTextBox.Size = new System.Drawing.Size(137, 26);
-            this.discountPercentageTextBox.TabIndex = 3;
+            this.discountPercentageTextBox.TabIndex = 6;
             // 
             // gunaLabel2
             // 
@@ -554,6 +553,7 @@
             this.grandTotalTextBox.BorderColor = System.Drawing.Color.Silver;
             this.grandTotalTextBox.BorderSize = 1;
             this.grandTotalTextBox.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.grandTotalTextBox.Enabled = false;
             this.grandTotalTextBox.FocusedBaseColor = System.Drawing.Color.White;
             this.grandTotalTextBox.FocusedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(181)))));
             this.grandTotalTextBox.FocusedForeColor = System.Drawing.SystemColors.ControlText;
@@ -580,6 +580,7 @@
             this.showDataGridView.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(224)))), ((int)(((byte)(244)))));
             this.showDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.showDataGridView.AutoGenerateColumns = false;
             this.showDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.showDataGridView.BackgroundColor = System.Drawing.Color.White;
             this.showDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -595,8 +596,12 @@
             this.showDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.showDataGridView.ColumnHeadersHeight = 21;
             this.showDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.SL,
-            this.Action});
+            this.customerIDDataGridViewTextBoxColumn,
+            this.productIDDataGridViewTextBoxColumn,
+            this.quantityDataGridViewTextBoxColumn,
+            this.priceDataGridViewTextBoxColumn,
+            this.TotalPrice});
+            this.showDataGridView.DataSource = this.saleBindingSource;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(234)))), ((int)(((byte)(247)))));
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.5F);
@@ -637,17 +642,43 @@
             this.showDataGridView.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(186)))), ((int)(((byte)(231)))));
             this.showDataGridView.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
             // 
-            // SL
+            // customerIDDataGridViewTextBoxColumn
             // 
-            this.SL.HeaderText = "SL";
-            this.SL.Name = "SL";
-            this.SL.ReadOnly = true;
+            this.customerIDDataGridViewTextBoxColumn.DataPropertyName = "CustomerID";
+            this.customerIDDataGridViewTextBoxColumn.HeaderText = "Customer";
+            this.customerIDDataGridViewTextBoxColumn.Name = "customerIDDataGridViewTextBoxColumn";
+            this.customerIDDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // Action
+            // productIDDataGridViewTextBoxColumn
             // 
-            this.Action.HeaderText = "Action";
-            this.Action.Name = "Action";
-            this.Action.ReadOnly = true;
+            this.productIDDataGridViewTextBoxColumn.DataPropertyName = "ProductID";
+            this.productIDDataGridViewTextBoxColumn.HeaderText = "Product";
+            this.productIDDataGridViewTextBoxColumn.Name = "productIDDataGridViewTextBoxColumn";
+            this.productIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // quantityDataGridViewTextBoxColumn
+            // 
+            this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
+            this.quantityDataGridViewTextBoxColumn.HeaderText = "Quantity";
+            this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
+            this.quantityDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // priceDataGridViewTextBoxColumn
+            // 
+            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
+            this.priceDataGridViewTextBoxColumn.HeaderText = "Price";
+            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
+            this.priceDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // TotalPrice
+            // 
+            this.TotalPrice.HeaderText = "Total Price";
+            this.TotalPrice.Name = "TotalPrice";
+            this.TotalPrice.ReadOnly = true;
+            // 
+            // saleBindingSource
+            // 
+            this.saleBindingSource.DataSource = typeof(StockManagement.Model.Sale);
             // 
             // SalesUserControl
             // 
@@ -661,11 +692,13 @@
             this.Size = new System.Drawing.Size(881, 570);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.showDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.saleBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -673,10 +706,9 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DateTimePicker purchaseDatePicker;
+        private System.Windows.Forms.DateTimePicker saleDatePicker;
         private Guna.UI.WinForms.GunaTextBox loyalityPointTextBox;
         private System.Windows.Forms.Label label2;
-        private Guna.UI.WinForms.GunaComboBox customerComboBox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label customerErrorLabel;
@@ -686,9 +718,7 @@
         private System.Windows.Forms.Label label9;
         private Guna.UI.WinForms.GunaTextBox availableQuantityTextBox;
         private System.Windows.Forms.Label label4;
-        private Guna.UI.WinForms.GunaComboBox categoryComboBox;
         private System.Windows.Forms.Label label8;
-        private Guna.UI.WinForms.GunaComboBox productComboBox;
         private System.Windows.Forms.Label categoryErrorLabel;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label productErrorLabel;
@@ -699,8 +729,6 @@
         private System.Windows.Forms.Label quantityErrorLabel;
         private System.Windows.Forms.GroupBox groupBox3;
         private Guna.UI.WinForms.GunaDataGridView showDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SL;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Action;
         private Guna.UI.WinForms.GunaTextBox grandTotalTextBox;
         private Guna.UI.WinForms.GunaLabel gunaLabel1;
         private Guna.UI.WinForms.GunaButton addButton;
@@ -711,5 +739,15 @@
         private Guna.UI.WinForms.GunaLabel gunaLabel3;
         private Guna.UI.WinForms.GunaTextBox discountPercentageTextBox;
         private Guna.UI.WinForms.GunaLabel gunaLabel2;
+        private System.Windows.Forms.ComboBox customerComboBox;
+        private System.Windows.Forms.ComboBox productComboBox;
+        private System.Windows.Forms.ComboBox categoryComboBox;
+        private System.Windows.Forms.BindingSource customerBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn customerIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn productIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TotalPrice;
+        private System.Windows.Forms.BindingSource saleBindingSource;
     }
 }

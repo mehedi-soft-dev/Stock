@@ -78,11 +78,19 @@
             this.label4 = new System.Windows.Forms.Label();
             this.submitButton = new Guna.UI.WinForms.GunaButton();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.gunaLabel2 = new Guna.UI.WinForms.GunaLabel();
-            this.gunaLabel1 = new Guna.UI.WinForms.GunaLabel();
             this.showDataGridView = new Guna.UI.WinForms.GunaDataGridView();
             this.SL = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Action = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.invoiceNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.supplierIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unitPriceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mRPDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.purchaseBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.totalItemLabel = new Guna.UI.WinForms.GunaLabel();
+            this.gunaLabel1 = new Guna.UI.WinForms.GunaLabel();
             this.supplierBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -90,6 +98,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.showDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.purchaseBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.supplierBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -119,7 +128,7 @@
             this.supplierComboBox.Location = new System.Drawing.Point(85, 110);
             this.supplierComboBox.Name = "supplierComboBox";
             this.supplierComboBox.Size = new System.Drawing.Size(153, 23);
-            this.supplierComboBox.TabIndex = 18;
+            this.supplierComboBox.TabIndex = 2;
             this.supplierComboBox.ValueMember = "ID";
             // 
             // purchaseDatePicker
@@ -130,7 +139,7 @@
             this.purchaseDatePicker.Location = new System.Drawing.Point(85, 28);
             this.purchaseDatePicker.Name = "purchaseDatePicker";
             this.purchaseDatePicker.Size = new System.Drawing.Size(153, 25);
-            this.purchaseDatePicker.TabIndex = 3;
+            this.purchaseDatePicker.TabIndex = 0;
             this.purchaseDatePicker.Value = new System.DateTime(2019, 10, 22, 0, 0, 0, 0);
             // 
             // label3
@@ -174,7 +183,7 @@
             this.invoiceNoTextBox.Name = "invoiceNoTextBox";
             this.invoiceNoTextBox.PasswordChar = '\0';
             this.invoiceNoTextBox.Size = new System.Drawing.Size(153, 26);
-            this.invoiceNoTextBox.TabIndex = 0;
+            this.invoiceNoTextBox.TabIndex = 1;
             // 
             // supplierLabel
             // 
@@ -255,10 +264,10 @@
             this.productComboBox.DisplayMember = "Name";
             this.productComboBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.productComboBox.FormattingEnabled = true;
-            this.productComboBox.Location = new System.Drawing.Point(106, 69);
+            this.productComboBox.Location = new System.Drawing.Point(106, 66);
             this.productComboBox.Name = "productComboBox";
             this.productComboBox.Size = new System.Drawing.Size(153, 23);
-            this.productComboBox.TabIndex = 18;
+            this.productComboBox.TabIndex = 4;
             this.productComboBox.ValueMember = "ID";
             this.productComboBox.TextChanged += new System.EventHandler(this.productComboBox_TextChanged);
             // 
@@ -274,7 +283,7 @@
             this.expireDatePicker.Location = new System.Drawing.Point(106, 228);
             this.expireDatePicker.Name = "expireDatePicker";
             this.expireDatePicker.Size = new System.Drawing.Size(153, 25);
-            this.expireDatePicker.TabIndex = 3;
+            this.expireDatePicker.TabIndex = 6;
             this.expireDatePicker.Value = new System.DateTime(2019, 10, 16, 0, 0, 0, 0);
             this.expireDatePicker.ValueChanged += new System.EventHandler(this.expireDatePicker_ValueChanged);
             this.expireDatePicker.KeyDown += new System.Windows.Forms.KeyEventHandler(this.expireDatePicker_KeyDown);
@@ -288,7 +297,7 @@
             this.categoryComboBox.Location = new System.Drawing.Point(106, 26);
             this.categoryComboBox.Name = "categoryComboBox";
             this.categoryComboBox.Size = new System.Drawing.Size(153, 23);
-            this.categoryComboBox.TabIndex = 18;
+            this.categoryComboBox.TabIndex = 3;
             this.categoryComboBox.ValueMember = "ID";
             this.categoryComboBox.TextChanged += new System.EventHandler(this.categoryComboBox_TextChanged);
             // 
@@ -304,7 +313,7 @@
             this.manufacturedDatePicker.Location = new System.Drawing.Point(106, 188);
             this.manufacturedDatePicker.Name = "manufacturedDatePicker";
             this.manufacturedDatePicker.Size = new System.Drawing.Size(153, 25);
-            this.manufacturedDatePicker.TabIndex = 3;
+            this.manufacturedDatePicker.TabIndex = 5;
             this.manufacturedDatePicker.Value = new System.DateTime(2019, 10, 16, 0, 0, 0, 0);
             this.manufacturedDatePicker.ValueChanged += new System.EventHandler(this.manufacturedDatePicker_ValueChanged);
             this.manufacturedDatePicker.KeyDown += new System.Windows.Forms.KeyEventHandler(this.manufacturedDatePicker_KeyDown);
@@ -324,7 +333,7 @@
             this.remarkTextBox.Name = "remarkTextBox";
             this.remarkTextBox.PasswordChar = '\0';
             this.remarkTextBox.Size = new System.Drawing.Size(446, 49);
-            this.remarkTextBox.TabIndex = 0;
+            this.remarkTextBox.TabIndex = 10;
             // 
             // addButton
             // 
@@ -347,7 +356,7 @@
             this.addButton.OnPressedColor = System.Drawing.Color.Black;
             this.addButton.Radius = 15;
             this.addButton.Size = new System.Drawing.Size(130, 34);
-            this.addButton.TabIndex = 5;
+            this.addButton.TabIndex = 11;
             this.addButton.Text = "Add";
             this.addButton.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.addButton.Click += new System.EventHandler(this.addButton_Click);
@@ -358,6 +367,7 @@
             this.availableQuantityTextBox.BorderColor = System.Drawing.Color.Silver;
             this.availableQuantityTextBox.BorderSize = 1;
             this.availableQuantityTextBox.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.availableQuantityTextBox.Enabled = false;
             this.availableQuantityTextBox.FocusedBaseColor = System.Drawing.Color.White;
             this.availableQuantityTextBox.FocusedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(181)))));
             this.availableQuantityTextBox.FocusedForeColor = System.Drawing.SystemColors.ControlText;
@@ -382,7 +392,7 @@
             this.MRPTextBox.Name = "MRPTextBox";
             this.MRPTextBox.PasswordChar = '\0';
             this.MRPTextBox.Size = new System.Drawing.Size(153, 26);
-            this.MRPTextBox.TabIndex = 0;
+            this.MRPTextBox.TabIndex = 9;
             // 
             // previousMRPTextBox
             // 
@@ -390,6 +400,7 @@
             this.previousMRPTextBox.BorderColor = System.Drawing.Color.Silver;
             this.previousMRPTextBox.BorderSize = 1;
             this.previousMRPTextBox.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.previousMRPTextBox.Enabled = false;
             this.previousMRPTextBox.FocusedBaseColor = System.Drawing.Color.White;
             this.previousMRPTextBox.FocusedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(181)))));
             this.previousMRPTextBox.FocusedForeColor = System.Drawing.SystemColors.ControlText;
@@ -406,6 +417,7 @@
             this.previousUnitPriceTextBox.BorderColor = System.Drawing.Color.Silver;
             this.previousUnitPriceTextBox.BorderSize = 1;
             this.previousUnitPriceTextBox.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.previousUnitPriceTextBox.Enabled = false;
             this.previousUnitPriceTextBox.FocusedBaseColor = System.Drawing.Color.White;
             this.previousUnitPriceTextBox.FocusedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(181)))));
             this.previousUnitPriceTextBox.FocusedForeColor = System.Drawing.SystemColors.ControlText;
@@ -422,6 +434,7 @@
             this.totalPriceTextBox.BorderColor = System.Drawing.Color.Silver;
             this.totalPriceTextBox.BorderSize = 1;
             this.totalPriceTextBox.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.totalPriceTextBox.Enabled = false;
             this.totalPriceTextBox.FocusedBaseColor = System.Drawing.Color.White;
             this.totalPriceTextBox.FocusedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(181)))));
             this.totalPriceTextBox.FocusedForeColor = System.Drawing.SystemColors.ControlText;
@@ -446,7 +459,8 @@
             this.unitPriceTextBox.Name = "unitPriceTextBox";
             this.unitPriceTextBox.PasswordChar = '\0';
             this.unitPriceTextBox.Size = new System.Drawing.Size(153, 26);
-            this.unitPriceTextBox.TabIndex = 0;
+            this.unitPriceTextBox.TabIndex = 8;
+            this.unitPriceTextBox.Leave += new System.EventHandler(this.unitPriceTextBox_Leave);
             // 
             // quantityTextBox
             // 
@@ -462,7 +476,8 @@
             this.quantityTextBox.Name = "quantityTextBox";
             this.quantityTextBox.PasswordChar = '\0';
             this.quantityTextBox.Size = new System.Drawing.Size(153, 26);
-            this.quantityTextBox.TabIndex = 0;
+            this.quantityTextBox.TabIndex = 7;
+            this.quantityTextBox.Leave += new System.EventHandler(this.quantityTextBox_Leave);
             // 
             // codeTextBox
             // 
@@ -475,7 +490,7 @@
             this.codeTextBox.FocusedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(181)))));
             this.codeTextBox.FocusedForeColor = System.Drawing.SystemColors.ControlText;
             this.codeTextBox.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.codeTextBox.Location = new System.Drawing.Point(105, 108);
+            this.codeTextBox.Location = new System.Drawing.Point(105, 106);
             this.codeTextBox.Name = "codeTextBox";
             this.codeTextBox.PasswordChar = '\0';
             this.codeTextBox.Size = new System.Drawing.Size(153, 26);
@@ -549,7 +564,7 @@
             this.categoryErrorLabel.AutoSize = true;
             this.categoryErrorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.categoryErrorLabel.ForeColor = System.Drawing.Color.Red;
-            this.categoryErrorLabel.Location = new System.Drawing.Point(103, 53);
+            this.categoryErrorLabel.Location = new System.Drawing.Point(103, 49);
             this.categoryErrorLabel.Name = "categoryErrorLabel";
             this.categoryErrorLabel.Size = new System.Drawing.Size(117, 13);
             this.categoryErrorLabel.TabIndex = 1;
@@ -560,7 +575,7 @@
             this.productErrorLabel.AutoSize = true;
             this.productErrorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.productErrorLabel.ForeColor = System.Drawing.Color.Red;
-            this.productErrorLabel.Location = new System.Drawing.Point(103, 93);
+            this.productErrorLabel.Location = new System.Drawing.Point(103, 90);
             this.productErrorLabel.Name = "productErrorLabel";
             this.productErrorLabel.Size = new System.Drawing.Size(112, 13);
             this.productErrorLabel.TabIndex = 1;
@@ -666,46 +681,26 @@
             this.submitButton.TabIndex = 5;
             this.submitButton.Text = "Submit";
             this.submitButton.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Controls.Add(this.gunaLabel2);
-            this.panel1.Controls.Add(this.gunaLabel1);
             this.panel1.Controls.Add(this.showDataGridView);
+            this.panel1.Controls.Add(this.totalItemLabel);
+            this.panel1.Controls.Add(this.gunaLabel1);
             this.panel1.Controls.Add(this.submitButton);
             this.panel1.Location = new System.Drawing.Point(23, 403);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(844, 164);
             this.panel1.TabIndex = 2;
             // 
-            // gunaLabel2
-            // 
-            this.gunaLabel2.AutoSize = true;
-            this.gunaLabel2.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.gunaLabel2.Location = new System.Drawing.Point(426, 133);
-            this.gunaLabel2.Name = "gunaLabel2";
-            this.gunaLabel2.Size = new System.Drawing.Size(19, 15);
-            this.gunaLabel2.TabIndex = 6;
-            this.gunaLabel2.Text = "10";
-            // 
-            // gunaLabel1
-            // 
-            this.gunaLabel1.AutoSize = true;
-            this.gunaLabel1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.gunaLabel1.Location = new System.Drawing.Point(361, 132);
-            this.gunaLabel1.Name = "gunaLabel1";
-            this.gunaLabel1.Size = new System.Drawing.Size(65, 15);
-            this.gunaLabel1.TabIndex = 6;
-            this.gunaLabel1.Text = "Total Item :";
-            // 
             // showDataGridView
             // 
-            this.showDataGridView.AllowUserToAddRows = false;
-            this.showDataGridView.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(224)))), ((int)(((byte)(244)))));
             this.showDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.showDataGridView.AutoGenerateColumns = false;
             this.showDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.showDataGridView.BackgroundColor = System.Drawing.Color.White;
             this.showDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -722,7 +717,15 @@
             this.showDataGridView.ColumnHeadersHeight = 21;
             this.showDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.SL,
-            this.Action});
+            this.iDDataGridViewTextBoxColumn,
+            this.dateDataGridViewTextBoxColumn,
+            this.invoiceNoDataGridViewTextBoxColumn,
+            this.supplierIDDataGridViewTextBoxColumn,
+            this.productIDDataGridViewTextBoxColumn,
+            this.quantityDataGridViewTextBoxColumn,
+            this.unitPriceDataGridViewTextBoxColumn,
+            this.mRPDataGridViewTextBoxColumn});
+            this.showDataGridView.DataSource = this.purchaseBindingSource;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(234)))), ((int)(((byte)(247)))));
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.5F);
@@ -733,13 +736,12 @@
             this.showDataGridView.DefaultCellStyle = dataGridViewCellStyle3;
             this.showDataGridView.EnableHeadersVisualStyles = false;
             this.showDataGridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(220)))), ((int)(((byte)(242)))));
-            this.showDataGridView.Location = new System.Drawing.Point(3, -3);
+            this.showDataGridView.Location = new System.Drawing.Point(3, -2);
             this.showDataGridView.Name = "showDataGridView";
-            this.showDataGridView.ReadOnly = true;
             this.showDataGridView.RowHeadersVisible = false;
             this.showDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.showDataGridView.Size = new System.Drawing.Size(834, 123);
-            this.showDataGridView.TabIndex = 0;
+            this.showDataGridView.Size = new System.Drawing.Size(834, 120);
+            this.showDataGridView.TabIndex = 7;
             this.showDataGridView.Theme = Guna.UI.WinForms.GunaDataGridViewPresetThemes.FeterRiver;
             this.showDataGridView.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(224)))), ((int)(((byte)(244)))));
             this.showDataGridView.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -754,7 +756,7 @@
             this.showDataGridView.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
             this.showDataGridView.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.showDataGridView.ThemeStyle.HeaderStyle.Height = 21;
-            this.showDataGridView.ThemeStyle.ReadOnly = true;
+            this.showDataGridView.ThemeStyle.ReadOnly = false;
             this.showDataGridView.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(234)))), ((int)(((byte)(247)))));
             this.showDataGridView.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.showDataGridView.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 10.5F);
@@ -769,11 +771,77 @@
             this.SL.Name = "SL";
             this.SL.ReadOnly = true;
             // 
-            // Action
+            // iDDataGridViewTextBoxColumn
             // 
-            this.Action.HeaderText = "Action";
-            this.Action.Name = "Action";
-            this.Action.ReadOnly = true;
+            this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
+            this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
+            this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
+            // 
+            // dateDataGridViewTextBoxColumn
+            // 
+            this.dateDataGridViewTextBoxColumn.DataPropertyName = "Date";
+            this.dateDataGridViewTextBoxColumn.HeaderText = "Date";
+            this.dateDataGridViewTextBoxColumn.Name = "dateDataGridViewTextBoxColumn";
+            // 
+            // invoiceNoDataGridViewTextBoxColumn
+            // 
+            this.invoiceNoDataGridViewTextBoxColumn.DataPropertyName = "InvoiceNo";
+            this.invoiceNoDataGridViewTextBoxColumn.HeaderText = "InvoiceNo";
+            this.invoiceNoDataGridViewTextBoxColumn.Name = "invoiceNoDataGridViewTextBoxColumn";
+            // 
+            // supplierIDDataGridViewTextBoxColumn
+            // 
+            this.supplierIDDataGridViewTextBoxColumn.DataPropertyName = "SupplierID";
+            this.supplierIDDataGridViewTextBoxColumn.HeaderText = "SupplierID";
+            this.supplierIDDataGridViewTextBoxColumn.Name = "supplierIDDataGridViewTextBoxColumn";
+            // 
+            // productIDDataGridViewTextBoxColumn
+            // 
+            this.productIDDataGridViewTextBoxColumn.DataPropertyName = "ProductID";
+            this.productIDDataGridViewTextBoxColumn.HeaderText = "ProductID";
+            this.productIDDataGridViewTextBoxColumn.Name = "productIDDataGridViewTextBoxColumn";
+            // 
+            // quantityDataGridViewTextBoxColumn
+            // 
+            this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
+            this.quantityDataGridViewTextBoxColumn.HeaderText = "Quantity";
+            this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
+            // 
+            // unitPriceDataGridViewTextBoxColumn
+            // 
+            this.unitPriceDataGridViewTextBoxColumn.DataPropertyName = "UnitPrice";
+            this.unitPriceDataGridViewTextBoxColumn.HeaderText = "UnitPrice";
+            this.unitPriceDataGridViewTextBoxColumn.Name = "unitPriceDataGridViewTextBoxColumn";
+            // 
+            // mRPDataGridViewTextBoxColumn
+            // 
+            this.mRPDataGridViewTextBoxColumn.DataPropertyName = "MRP";
+            this.mRPDataGridViewTextBoxColumn.HeaderText = "MRP";
+            this.mRPDataGridViewTextBoxColumn.Name = "mRPDataGridViewTextBoxColumn";
+            // 
+            // purchaseBindingSource
+            // 
+            this.purchaseBindingSource.DataSource = typeof(StockManagement.Model.Purchase);
+            // 
+            // totalItemLabel
+            // 
+            this.totalItemLabel.AutoSize = true;
+            this.totalItemLabel.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.totalItemLabel.Location = new System.Drawing.Point(426, 133);
+            this.totalItemLabel.Name = "totalItemLabel";
+            this.totalItemLabel.Size = new System.Drawing.Size(13, 15);
+            this.totalItemLabel.TabIndex = 6;
+            this.totalItemLabel.Text = "0";
+            // 
+            // gunaLabel1
+            // 
+            this.gunaLabel1.AutoSize = true;
+            this.gunaLabel1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.gunaLabel1.Location = new System.Drawing.Point(361, 132);
+            this.gunaLabel1.Name = "gunaLabel1";
+            this.gunaLabel1.Size = new System.Drawing.Size(65, 15);
+            this.gunaLabel1.TabIndex = 6;
+            this.gunaLabel1.Text = "Total Item :";
             // 
             // supplierBindingSource
             // 
@@ -798,6 +866,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.showDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.purchaseBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.supplierBindingSource)).EndInit();
             this.ResumeLayout(false);
 
@@ -845,10 +914,7 @@
         private Guna.UI.WinForms.GunaTextBox remarkTextBox;
         private System.Windows.Forms.Label categoryErrorLabel;
         private System.Windows.Forms.Label unitPriceErrorLabel;
-        private Guna.UI.WinForms.GunaDataGridView showDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SL;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Action;
-        private Guna.UI.WinForms.GunaLabel gunaLabel2;
+        private Guna.UI.WinForms.GunaLabel totalItemLabel;
         private Guna.UI.WinForms.GunaLabel gunaLabel1;
         private Guna.UI.WinForms.GunaButton addButton;
         private System.Windows.Forms.BindingSource supplierBindingSource;
@@ -857,5 +923,17 @@
         private System.Windows.Forms.BindingSource productBindingSource;
         private System.Windows.Forms.ComboBox categoryComboBox;
         private System.Windows.Forms.BindingSource categoryBindingSource;
+        private Guna.UI.WinForms.GunaDataGridView showDataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SL;
+        private System.Windows.Forms.DataGridViewTextBoxColumn billNoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn invoiceNoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn supplierIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn productIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn unitPriceDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mRPDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource purchaseBindingSource;
     }
 }

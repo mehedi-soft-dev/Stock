@@ -50,3 +50,60 @@ CREATE TABLE Suppliers
 
 SELECT * FROM Suppliers
 
+CREATE TABLE Purchases
+(
+	ID INT IDENTITY(1,1) PRIMARY KEY,
+	Date DATETIME, 
+	InvoiceNo VARCHAR(15),
+	SupplierID INT REFERENCES Suppliers("ID"),
+	ProductID INT REFERENCES Products("ID"),
+	Quantity INT,
+	UnitPrice FLOAT,
+	MRP FLOAT
+)
+
+INSERT INTO Purchases (Date, InvoiceNo, SupplierID, ProductID, Quantity, UnitPrice, MRP) VALUES();
+
+DROP TABLE Purchases
+
+SELECT * FROM Purchases
+
+Select * FROM Purchases Where ProductID = 1
+
+SELECT UnitPrice, MRP FROM Purchases WHERE ID IN (SELECT max(ID) FROM Purchases WHERE ProductID = 1)
+
+CREATE VIEW AvailableQuantity
+AS
+SELECT ProductID, SUM(Quantity) As Qty  From Purchases GROUP BY ProductID
+
+Select * FROM AvailableQuantity WHERE ProductID = 1
+
+DROP VIEW AvailableQuantity
+
+CREATE TABLE PurchaseItem
+(
+	ID INT IDENTITY(1,1) PRIMARY KEY,
+	ProductID INT REFERENCES Products("ID"),
+	ManucaturedDate DATETIME,
+	ExpireDate DATETIME,
+	Quantity INT, 
+	UnitPrice FLOAT,
+	MRP FLOAT
+)
+SELECT * FROM PurchaseItem
+
+DROP TABLE PurchaseItem
+
+CREATE TABLE Sales
+(
+	ID INT IDENTITY(1,1) PRIMARY KEY,
+	Date DATETIME,
+	CustomerID INT REFERENCES Customers("ID"),
+	ProductID INT REFERENCES Products("ID"),
+	Quantity INT,
+	Price FLOAT
+)
+
+SELECT * FROM Sales
+DROP TABLE Sales
+
