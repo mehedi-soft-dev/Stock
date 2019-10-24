@@ -94,6 +94,32 @@ namespace StockManagement.Repository
             return customers;
         }
 
+        public Customer SearchById(int id)
+        {
+            string commandString = @"SELECT * FROM Customers WHERE ID =" + id + "";
+            ConnectionDB connection = new ConnectionDB();
+            sqlConnection = connection.CreateConnection();
+
+            SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
+
+            sqlConnection.Open();
+            
+            SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+
+            Customer _customer = new Customer();
+            while (sqlDataReader.Read())
+            {
+                _customer.ID = Convert.ToInt32(sqlDataReader["ID"]);
+                _customer.Code = sqlDataReader["Code"].ToString();
+                _customer.Name = sqlDataReader["Name"].ToString();
+                _customer.LoyalityPoint = Convert.ToInt32(sqlDataReader["LoyalityPoint"]);
+            }
+
+            sqlConnection.Close();
+
+            return _customer;
+        }
+
         public List<Customer> CustomerComboItem()
         {
             List<Customer> customers = new List<Customer>();

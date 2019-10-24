@@ -14,16 +14,18 @@ namespace StockManagement.Model
         public int ProductID { get; set; }
         public int Quantity { get; set; }
         public double Price { get; set; }
+        public double DiscountPercentage { get; set; }
 
         public Sale() { }
 
-        public Sale(DateTime date, int customerId, int productId, int quantity, double price)
+        public Sale(DateTime date, int customerId, int productId, int quantity, double price, double discountPercentage)
         {
             this.Date = date;
             this.CustomerID = customerId;
             this.ProductID = productId;
             this.Quantity = quantity;
             this.Price = price;
+            this.DiscountPercentage = discountPercentage;
         }
     }
 }

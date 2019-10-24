@@ -48,7 +48,7 @@
             this.addButton = new Guna.UI.WinForms.GunaButton();
             this.totalMRPTextBox = new Guna.UI.WinForms.GunaTextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.MRPTextBox = new Guna.UI.WinForms.GunaTextBox();
+            this.priceTextBox = new Guna.UI.WinForms.GunaTextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.quantityTextBox = new Guna.UI.WinForms.GunaTextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -57,6 +57,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.categoryErrorLabel = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.priceErrorLabel = new System.Windows.Forms.Label();
             this.quantityErrorLabel = new System.Windows.Forms.Label();
             this.productErrorLabel = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -112,6 +113,7 @@
             this.customerComboBox.Size = new System.Drawing.Size(177, 23);
             this.customerComboBox.TabIndex = 1;
             this.customerComboBox.ValueMember = "ID";
+            this.customerComboBox.TextChanged += new System.EventHandler(this.customerComboBox_TextChanged);
             // 
             // customerBindingSource
             // 
@@ -142,7 +144,7 @@
             this.loyalityPointTextBox.Name = "loyalityPointTextBox";
             this.loyalityPointTextBox.PasswordChar = '\0';
             this.loyalityPointTextBox.Size = new System.Drawing.Size(173, 26);
-            this.loyalityPointTextBox.TabIndex = 0;
+            this.loyalityPointTextBox.TabIndex = 2;
             // 
             // label2
             // 
@@ -178,9 +180,8 @@
             this.customerErrorLabel.ForeColor = System.Drawing.Color.Red;
             this.customerErrorLabel.Location = new System.Drawing.Point(107, 100);
             this.customerErrorLabel.Name = "customerErrorLabel";
-            this.customerErrorLabel.Size = new System.Drawing.Size(119, 13);
+            this.customerErrorLabel.Size = new System.Drawing.Size(0, 13);
             this.customerErrorLabel.TabIndex = 1;
-            this.customerErrorLabel.Text = "Please Select Customer";
             // 
             // purchaseDateErrorlabel
             // 
@@ -189,9 +190,8 @@
             this.purchaseDateErrorlabel.ForeColor = System.Drawing.Color.Red;
             this.purchaseDateErrorlabel.Location = new System.Drawing.Point(108, 58);
             this.purchaseDateErrorlabel.Name = "purchaseDateErrorlabel";
-            this.purchaseDateErrorlabel.Size = new System.Drawing.Size(119, 13);
+            this.purchaseDateErrorlabel.Size = new System.Drawing.Size(0, 13);
             this.purchaseDateErrorlabel.TabIndex = 1;
-            this.purchaseDateErrorlabel.Text = "Please Enter Valid Date";
             // 
             // groupBox2
             // 
@@ -200,7 +200,7 @@
             this.groupBox2.Controls.Add(this.addButton);
             this.groupBox2.Controls.Add(this.totalMRPTextBox);
             this.groupBox2.Controls.Add(this.label11);
-            this.groupBox2.Controls.Add(this.MRPTextBox);
+            this.groupBox2.Controls.Add(this.priceTextBox);
             this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.quantityTextBox);
             this.groupBox2.Controls.Add(this.label9);
@@ -209,6 +209,7 @@
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.categoryErrorLabel);
             this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Controls.Add(this.priceErrorLabel);
             this.groupBox2.Controls.Add(this.quantityErrorLabel);
             this.groupBox2.Controls.Add(this.productErrorLabel);
             this.groupBox2.Location = new System.Drawing.Point(21, 227);
@@ -294,22 +295,21 @@
             this.label11.TabIndex = 1;
             this.label11.Text = "Total Price (Tk.)";
             // 
-            // MRPTextBox
+            // priceTextBox
             // 
-            this.MRPTextBox.BaseColor = System.Drawing.Color.White;
-            this.MRPTextBox.BorderColor = System.Drawing.Color.Silver;
-            this.MRPTextBox.BorderSize = 1;
-            this.MRPTextBox.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.MRPTextBox.Enabled = false;
-            this.MRPTextBox.FocusedBaseColor = System.Drawing.Color.White;
-            this.MRPTextBox.FocusedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(181)))));
-            this.MRPTextBox.FocusedForeColor = System.Drawing.SystemColors.ControlText;
-            this.MRPTextBox.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.MRPTextBox.Location = new System.Drawing.Point(109, 179);
-            this.MRPTextBox.Name = "MRPTextBox";
-            this.MRPTextBox.PasswordChar = '\0';
-            this.MRPTextBox.Size = new System.Drawing.Size(175, 26);
-            this.MRPTextBox.TabIndex = 0;
+            this.priceTextBox.BaseColor = System.Drawing.Color.White;
+            this.priceTextBox.BorderColor = System.Drawing.Color.Silver;
+            this.priceTextBox.BorderSize = 1;
+            this.priceTextBox.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.priceTextBox.FocusedBaseColor = System.Drawing.Color.White;
+            this.priceTextBox.FocusedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(181)))));
+            this.priceTextBox.FocusedForeColor = System.Drawing.SystemColors.ControlText;
+            this.priceTextBox.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.priceTextBox.Location = new System.Drawing.Point(109, 179);
+            this.priceTextBox.Name = "priceTextBox";
+            this.priceTextBox.PasswordChar = '\0';
+            this.priceTextBox.Size = new System.Drawing.Size(175, 26);
+            this.priceTextBox.TabIndex = 5;
             // 
             // label10
             // 
@@ -388,9 +388,8 @@
             this.categoryErrorLabel.ForeColor = System.Drawing.Color.Red;
             this.categoryErrorLabel.Location = new System.Drawing.Point(107, 38);
             this.categoryErrorLabel.Name = "categoryErrorLabel";
-            this.categoryErrorLabel.Size = new System.Drawing.Size(119, 13);
+            this.categoryErrorLabel.Size = new System.Drawing.Size(0, 13);
             this.categoryErrorLabel.TabIndex = 1;
-            this.categoryErrorLabel.Text = "Please Select Customer";
             // 
             // label5
             // 
@@ -401,6 +400,16 @@
             this.label5.TabIndex = 1;
             this.label5.Text = "Product";
             // 
+            // priceErrorLabel
+            // 
+            this.priceErrorLabel.AutoSize = true;
+            this.priceErrorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.priceErrorLabel.ForeColor = System.Drawing.Color.Red;
+            this.priceErrorLabel.Location = new System.Drawing.Point(108, 204);
+            this.priceErrorLabel.Name = "priceErrorLabel";
+            this.priceErrorLabel.Size = new System.Drawing.Size(0, 13);
+            this.priceErrorLabel.TabIndex = 1;
+            // 
             // quantityErrorLabel
             // 
             this.quantityErrorLabel.AutoSize = true;
@@ -408,9 +417,8 @@
             this.quantityErrorLabel.ForeColor = System.Drawing.Color.Red;
             this.quantityErrorLabel.Location = new System.Drawing.Point(108, 163);
             this.quantityErrorLabel.Name = "quantityErrorLabel";
-            this.quantityErrorLabel.Size = new System.Drawing.Size(109, 13);
+            this.quantityErrorLabel.Size = new System.Drawing.Size(0, 13);
             this.quantityErrorLabel.TabIndex = 1;
-            this.quantityErrorLabel.Text = "Please Enter Quantity";
             // 
             // productErrorLabel
             // 
@@ -419,9 +427,8 @@
             this.productErrorLabel.ForeColor = System.Drawing.Color.Red;
             this.productErrorLabel.Location = new System.Drawing.Point(107, 84);
             this.productErrorLabel.Name = "productErrorLabel";
-            this.productErrorLabel.Size = new System.Drawing.Size(119, 13);
+            this.productErrorLabel.Size = new System.Drawing.Size(0, 13);
             this.productErrorLabel.TabIndex = 1;
-            this.productErrorLabel.Text = "Please Select Customer";
             // 
             // groupBox3
             // 
@@ -466,6 +473,7 @@
             this.submitButton.TabIndex = 7;
             this.submitButton.Text = "Submit";
             this.submitButton.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
             // 
             // payableAmountTextBox
             // 
@@ -483,6 +491,7 @@
             this.payableAmountTextBox.PasswordChar = '\0';
             this.payableAmountTextBox.Size = new System.Drawing.Size(137, 26);
             this.payableAmountTextBox.TabIndex = 3;
+            this.payableAmountTextBox.Text = "0";
             // 
             // gunaLabel4
             // 
@@ -510,6 +519,7 @@
             this.discountAmountTextBox.PasswordChar = '\0';
             this.discountAmountTextBox.Size = new System.Drawing.Size(137, 26);
             this.discountAmountTextBox.TabIndex = 3;
+            this.discountAmountTextBox.Text = "0";
             // 
             // gunaLabel3
             // 
@@ -527,6 +537,7 @@
             this.discountPercentageTextBox.BorderColor = System.Drawing.Color.Silver;
             this.discountPercentageTextBox.BorderSize = 1;
             this.discountPercentageTextBox.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.discountPercentageTextBox.Enabled = false;
             this.discountPercentageTextBox.FocusedBaseColor = System.Drawing.Color.White;
             this.discountPercentageTextBox.FocusedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(181)))));
             this.discountPercentageTextBox.FocusedForeColor = System.Drawing.SystemColors.ControlText;
@@ -536,6 +547,7 @@
             this.discountPercentageTextBox.PasswordChar = '\0';
             this.discountPercentageTextBox.Size = new System.Drawing.Size(137, 26);
             this.discountPercentageTextBox.TabIndex = 6;
+            this.discountPercentageTextBox.Text = "0";
             // 
             // gunaLabel2
             // 
@@ -563,6 +575,7 @@
             this.grandTotalTextBox.PasswordChar = '\0';
             this.grandTotalTextBox.Size = new System.Drawing.Size(137, 26);
             this.grandTotalTextBox.TabIndex = 3;
+            this.grandTotalTextBox.Text = "0";
             // 
             // gunaLabel1
             // 
@@ -724,7 +737,7 @@
         private System.Windows.Forms.Label productErrorLabel;
         private Guna.UI.WinForms.GunaTextBox totalMRPTextBox;
         private System.Windows.Forms.Label label11;
-        private Guna.UI.WinForms.GunaTextBox MRPTextBox;
+        private Guna.UI.WinForms.GunaTextBox priceTextBox;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label quantityErrorLabel;
         private System.Windows.Forms.GroupBox groupBox3;
@@ -749,5 +762,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn TotalPrice;
         private System.Windows.Forms.BindingSource saleBindingSource;
+        private System.Windows.Forms.Label priceErrorLabel;
     }
 }

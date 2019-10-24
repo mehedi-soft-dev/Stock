@@ -138,6 +138,7 @@
     <Compile Include="Repository\SaleRepository.cs" />
     <Compile Include="Repository\SupplierRepository.cs" />
     <Compile Include="ViewDataSource\ProductView.cs" />
+    <Compile Include="ViewDataSource\PurchaseView.cs" />
     <EmbeddedResource Include="Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </EmbeddedResource>
@@ -186,6 +187,7 @@
     <None Include="Properties\DataSources\StockManagement.Model.Purchase.datasource" />
     <None Include="Properties\DataSources\StockManagement.Model.Sale.datasource" />
     <None Include="Properties\DataSources\StockManagement.Model.Supplier.datasource" />
+    <None Include="Properties\DataSources\StockManagement.ViewDataSource.PurchaseView.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

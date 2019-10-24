@@ -32,6 +32,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PurchaseUserControl));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.supplierComboBox = new System.Windows.Forms.ComboBox();
             this.purchaseDatePicker = new System.Windows.Forms.DateTimePicker();
@@ -39,7 +40,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.invoiceNoTextBox = new Guna.UI.WinForms.GunaTextBox();
-            this.supplierLabel = new System.Windows.Forms.Label();
+            this.supplierErrorLabel = new System.Windows.Forms.Label();
             this.invoiceNoErrorLabel = new System.Windows.Forms.Label();
             this.purchaseDateErrorlabel = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -53,6 +54,7 @@
             this.addButton = new Guna.UI.WinForms.GunaButton();
             this.availableQuantityTextBox = new Guna.UI.WinForms.GunaTextBox();
             this.MRPTextBox = new Guna.UI.WinForms.GunaTextBox();
+            this.MRPErrorLabel = new System.Windows.Forms.Label();
             this.previousMRPTextBox = new Guna.UI.WinForms.GunaTextBox();
             this.previousUnitPriceTextBox = new Guna.UI.WinForms.GunaTextBox();
             this.totalPriceTextBox = new Guna.UI.WinForms.GunaTextBox();
@@ -80,14 +82,16 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.showDataGridView = new Guna.UI.WinForms.GunaDataGridView();
             this.SL = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.invoiceNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.supplierIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.productIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.manufactureDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.expireDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unitPriceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mRPDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Action = new System.Windows.Forms.DataGridViewImageColumn();
             this.purchaseBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.totalItemLabel = new Guna.UI.WinForms.GunaLabel();
             this.gunaLabel1 = new Guna.UI.WinForms.GunaLabel();
@@ -110,7 +114,7 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.invoiceNoTextBox);
-            this.groupBox1.Controls.Add(this.supplierLabel);
+            this.groupBox1.Controls.Add(this.supplierErrorLabel);
             this.groupBox1.Controls.Add(this.invoiceNoErrorLabel);
             this.groupBox1.Controls.Add(this.purchaseDateErrorlabel);
             this.groupBox1.Location = new System.Drawing.Point(12, 37);
@@ -130,6 +134,7 @@
             this.supplierComboBox.Size = new System.Drawing.Size(153, 23);
             this.supplierComboBox.TabIndex = 2;
             this.supplierComboBox.ValueMember = "ID";
+            this.supplierComboBox.TextChanged += new System.EventHandler(this.supplierComboBox_TextChanged);
             // 
             // purchaseDatePicker
             // 
@@ -184,17 +189,18 @@
             this.invoiceNoTextBox.PasswordChar = '\0';
             this.invoiceNoTextBox.Size = new System.Drawing.Size(153, 26);
             this.invoiceNoTextBox.TabIndex = 1;
+            this.invoiceNoTextBox.Leave += new System.EventHandler(this.invoiceNoTextBox_Leave);
             // 
-            // supplierLabel
+            // supplierErrorLabel
             // 
-            this.supplierLabel.AutoSize = true;
-            this.supplierLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.supplierLabel.ForeColor = System.Drawing.Color.Red;
-            this.supplierLabel.Location = new System.Drawing.Point(83, 134);
-            this.supplierLabel.Name = "supplierLabel";
-            this.supplierLabel.Size = new System.Drawing.Size(113, 13);
-            this.supplierLabel.TabIndex = 1;
-            this.supplierLabel.Text = "Please Select Supplier";
+            this.supplierErrorLabel.AutoSize = true;
+            this.supplierErrorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.supplierErrorLabel.ForeColor = System.Drawing.Color.Red;
+            this.supplierErrorLabel.Location = new System.Drawing.Point(83, 134);
+            this.supplierErrorLabel.Name = "supplierErrorLabel";
+            this.supplierErrorLabel.Size = new System.Drawing.Size(7, 13);
+            this.supplierErrorLabel.TabIndex = 1;
+            this.supplierErrorLabel.Text = "\r\n";
             // 
             // invoiceNoErrorLabel
             // 
@@ -203,9 +209,9 @@
             this.invoiceNoErrorLabel.ForeColor = System.Drawing.Color.Red;
             this.invoiceNoErrorLabel.Location = new System.Drawing.Point(83, 94);
             this.invoiceNoErrorLabel.Name = "invoiceNoErrorLabel";
-            this.invoiceNoErrorLabel.Size = new System.Drawing.Size(163, 13);
+            this.invoiceNoErrorLabel.Size = new System.Drawing.Size(7, 13);
             this.invoiceNoErrorLabel.TabIndex = 1;
-            this.invoiceNoErrorLabel.Text = "Please Enter Bill/Invoice Number";
+            this.invoiceNoErrorLabel.Text = "\r\n";
             // 
             // purchaseDateErrorlabel
             // 
@@ -214,9 +220,9 @@
             this.purchaseDateErrorlabel.ForeColor = System.Drawing.Color.Red;
             this.purchaseDateErrorlabel.Location = new System.Drawing.Point(84, 52);
             this.purchaseDateErrorlabel.Name = "purchaseDateErrorlabel";
-            this.purchaseDateErrorlabel.Size = new System.Drawing.Size(117, 13);
+            this.purchaseDateErrorlabel.Size = new System.Drawing.Size(7, 13);
             this.purchaseDateErrorlabel.TabIndex = 1;
-            this.purchaseDateErrorlabel.Text = "Please Select Category";
+            this.purchaseDateErrorlabel.Text = "\r\n";
             // 
             // groupBox2
             // 
@@ -228,6 +234,7 @@
             this.groupBox2.Controls.Add(this.addButton);
             this.groupBox2.Controls.Add(this.availableQuantityTextBox);
             this.groupBox2.Controls.Add(this.MRPTextBox);
+            this.groupBox2.Controls.Add(this.MRPErrorLabel);
             this.groupBox2.Controls.Add(this.previousMRPTextBox);
             this.groupBox2.Controls.Add(this.previousUnitPriceTextBox);
             this.groupBox2.Controls.Add(this.totalPriceTextBox);
@@ -393,6 +400,18 @@
             this.MRPTextBox.PasswordChar = '\0';
             this.MRPTextBox.Size = new System.Drawing.Size(153, 26);
             this.MRPTextBox.TabIndex = 9;
+            this.MRPTextBox.Leave += new System.EventHandler(this.MRPTextBox_Leave);
+            // 
+            // MRPErrorLabel
+            // 
+            this.MRPErrorLabel.AutoSize = true;
+            this.MRPErrorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MRPErrorLabel.ForeColor = System.Drawing.Color.Red;
+            this.MRPErrorLabel.Location = new System.Drawing.Point(397, 252);
+            this.MRPErrorLabel.Name = "MRPErrorLabel";
+            this.MRPErrorLabel.Size = new System.Drawing.Size(7, 13);
+            this.MRPErrorLabel.TabIndex = 1;
+            this.MRPErrorLabel.Text = "\r\n";
             // 
             // previousMRPTextBox
             // 
@@ -566,9 +585,9 @@
             this.categoryErrorLabel.ForeColor = System.Drawing.Color.Red;
             this.categoryErrorLabel.Location = new System.Drawing.Point(103, 49);
             this.categoryErrorLabel.Name = "categoryErrorLabel";
-            this.categoryErrorLabel.Size = new System.Drawing.Size(117, 13);
+            this.categoryErrorLabel.Size = new System.Drawing.Size(7, 13);
             this.categoryErrorLabel.TabIndex = 1;
-            this.categoryErrorLabel.Text = "Please Select Category";
+            this.categoryErrorLabel.Text = "\r\n";
             // 
             // productErrorLabel
             // 
@@ -577,9 +596,9 @@
             this.productErrorLabel.ForeColor = System.Drawing.Color.Red;
             this.productErrorLabel.Location = new System.Drawing.Point(103, 90);
             this.productErrorLabel.Name = "productErrorLabel";
-            this.productErrorLabel.Size = new System.Drawing.Size(112, 13);
+            this.productErrorLabel.Size = new System.Drawing.Size(7, 13);
             this.productErrorLabel.TabIndex = 1;
-            this.productErrorLabel.Text = "Please Select Product";
+            this.productErrorLabel.Text = "\r\n";
             // 
             // unitPriceErrorLabel
             // 
@@ -588,9 +607,9 @@
             this.unitPriceErrorLabel.ForeColor = System.Drawing.Color.Red;
             this.unitPriceErrorLabel.Location = new System.Drawing.Point(398, 93);
             this.unitPriceErrorLabel.Name = "unitPriceErrorLabel";
-            this.unitPriceErrorLabel.Size = new System.Drawing.Size(81, 13);
+            this.unitPriceErrorLabel.Size = new System.Drawing.Size(7, 13);
             this.unitPriceErrorLabel.TabIndex = 1;
-            this.unitPriceErrorLabel.Text = "Enter Unit Price";
+            this.unitPriceErrorLabel.Text = "\r\n";
             // 
             // quantityErrorLabel
             // 
@@ -599,9 +618,9 @@
             this.quantityErrorLabel.ForeColor = System.Drawing.Color.Red;
             this.quantityErrorLabel.Location = new System.Drawing.Point(397, 52);
             this.quantityErrorLabel.Name = "quantityErrorLabel";
-            this.quantityErrorLabel.Size = new System.Drawing.Size(74, 13);
+            this.quantityErrorLabel.Size = new System.Drawing.Size(7, 13);
             this.quantityErrorLabel.TabIndex = 1;
-            this.quantityErrorLabel.Text = "Enter Quantity";
+            this.quantityErrorLabel.Text = "\r\n";
             // 
             // label10
             // 
@@ -698,6 +717,9 @@
             // 
             // showDataGridView
             // 
+            this.showDataGridView.AllowUserToAddRows = false;
+            this.showDataGridView.AllowUserToDeleteRows = false;
+            this.showDataGridView.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(224)))), ((int)(((byte)(244)))));
             this.showDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.showDataGridView.AutoGenerateColumns = false;
@@ -706,7 +728,7 @@
             this.showDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.showDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.showDataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.5F);
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
@@ -715,16 +737,19 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.showDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.showDataGridView.ColumnHeadersHeight = 21;
+            this.showDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.showDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.SL,
-            this.iDDataGridViewTextBoxColumn,
             this.dateDataGridViewTextBoxColumn,
             this.invoiceNoDataGridViewTextBoxColumn,
             this.supplierIDDataGridViewTextBoxColumn,
             this.productIDDataGridViewTextBoxColumn,
+            this.manufactureDateDataGridViewTextBoxColumn,
+            this.expireDateDataGridViewTextBoxColumn,
             this.quantityDataGridViewTextBoxColumn,
             this.unitPriceDataGridViewTextBoxColumn,
-            this.mRPDataGridViewTextBoxColumn});
+            this.mRPDataGridViewTextBoxColumn,
+            this.Action});
             this.showDataGridView.DataSource = this.purchaseBindingSource;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(234)))), ((int)(((byte)(247)))));
@@ -738,6 +763,7 @@
             this.showDataGridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(220)))), ((int)(((byte)(242)))));
             this.showDataGridView.Location = new System.Drawing.Point(3, -2);
             this.showDataGridView.Name = "showDataGridView";
+            this.showDataGridView.ReadOnly = true;
             this.showDataGridView.RowHeadersVisible = false;
             this.showDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.showDataGridView.Size = new System.Drawing.Size(834, 120);
@@ -754,9 +780,9 @@
             this.showDataGridView.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.showDataGridView.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 10.5F);
             this.showDataGridView.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
-            this.showDataGridView.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            this.showDataGridView.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.showDataGridView.ThemeStyle.HeaderStyle.Height = 21;
-            this.showDataGridView.ThemeStyle.ReadOnly = false;
+            this.showDataGridView.ThemeStyle.ReadOnly = true;
             this.showDataGridView.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(234)))), ((int)(((byte)(247)))));
             this.showDataGridView.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.showDataGridView.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 10.5F);
@@ -771,53 +797,77 @@
             this.SL.Name = "SL";
             this.SL.ReadOnly = true;
             // 
-            // iDDataGridViewTextBoxColumn
-            // 
-            this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
-            this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
-            this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
-            // 
             // dateDataGridViewTextBoxColumn
             // 
             this.dateDataGridViewTextBoxColumn.DataPropertyName = "Date";
             this.dateDataGridViewTextBoxColumn.HeaderText = "Date";
             this.dateDataGridViewTextBoxColumn.Name = "dateDataGridViewTextBoxColumn";
+            this.dateDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // invoiceNoDataGridViewTextBoxColumn
             // 
             this.invoiceNoDataGridViewTextBoxColumn.DataPropertyName = "InvoiceNo";
-            this.invoiceNoDataGridViewTextBoxColumn.HeaderText = "InvoiceNo";
+            this.invoiceNoDataGridViewTextBoxColumn.HeaderText = "Invoice No";
             this.invoiceNoDataGridViewTextBoxColumn.Name = "invoiceNoDataGridViewTextBoxColumn";
+            this.invoiceNoDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // supplierIDDataGridViewTextBoxColumn
             // 
             this.supplierIDDataGridViewTextBoxColumn.DataPropertyName = "SupplierID";
-            this.supplierIDDataGridViewTextBoxColumn.HeaderText = "SupplierID";
+            this.supplierIDDataGridViewTextBoxColumn.HeaderText = "Supplier";
             this.supplierIDDataGridViewTextBoxColumn.Name = "supplierIDDataGridViewTextBoxColumn";
+            this.supplierIDDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // productIDDataGridViewTextBoxColumn
             // 
             this.productIDDataGridViewTextBoxColumn.DataPropertyName = "ProductID";
-            this.productIDDataGridViewTextBoxColumn.HeaderText = "ProductID";
+            this.productIDDataGridViewTextBoxColumn.HeaderText = "Product";
             this.productIDDataGridViewTextBoxColumn.Name = "productIDDataGridViewTextBoxColumn";
+            this.productIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // manufactureDateDataGridViewTextBoxColumn
+            // 
+            this.manufactureDateDataGridViewTextBoxColumn.DataPropertyName = "ManufactureDate";
+            this.manufactureDateDataGridViewTextBoxColumn.HeaderText = "Manufacture Date";
+            this.manufactureDateDataGridViewTextBoxColumn.Name = "manufactureDateDataGridViewTextBoxColumn";
+            this.manufactureDateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // expireDateDataGridViewTextBoxColumn
+            // 
+            this.expireDateDataGridViewTextBoxColumn.DataPropertyName = "ExpireDate";
+            this.expireDateDataGridViewTextBoxColumn.HeaderText = "Expire Date";
+            this.expireDateDataGridViewTextBoxColumn.Name = "expireDateDataGridViewTextBoxColumn";
+            this.expireDateDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // quantityDataGridViewTextBoxColumn
             // 
             this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
             this.quantityDataGridViewTextBoxColumn.HeaderText = "Quantity";
             this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
+            this.quantityDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // unitPriceDataGridViewTextBoxColumn
             // 
             this.unitPriceDataGridViewTextBoxColumn.DataPropertyName = "UnitPrice";
-            this.unitPriceDataGridViewTextBoxColumn.HeaderText = "UnitPrice";
+            this.unitPriceDataGridViewTextBoxColumn.HeaderText = "Unit Price (Tk.)";
             this.unitPriceDataGridViewTextBoxColumn.Name = "unitPriceDataGridViewTextBoxColumn";
+            this.unitPriceDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // mRPDataGridViewTextBoxColumn
             // 
             this.mRPDataGridViewTextBoxColumn.DataPropertyName = "MRP";
-            this.mRPDataGridViewTextBoxColumn.HeaderText = "MRP";
+            this.mRPDataGridViewTextBoxColumn.HeaderText = "M.R.P (Tk.)";
             this.mRPDataGridViewTextBoxColumn.Name = "mRPDataGridViewTextBoxColumn";
+            this.mRPDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // Action
+            // 
+            this.Action.HeaderText = "Action";
+            this.Action.Image = ((System.Drawing.Image)(resources.GetObject("Action.Image")));
+            this.Action.Name = "Action";
+            this.Action.ReadOnly = true;
+            this.Action.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Action.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // purchaseBindingSource
             // 
@@ -908,7 +958,7 @@
         private System.Windows.Forms.DateTimePicker manufacturedDatePicker;
         private System.Windows.Forms.Label productErrorLabel;
         private System.Windows.Forms.Label quantityErrorLabel;
-        private System.Windows.Forms.Label supplierLabel;
+        private System.Windows.Forms.Label supplierErrorLabel;
         private System.Windows.Forms.Label invoiceNoErrorLabel;
         private System.Windows.Forms.Label purchaseDateErrorlabel;
         private Guna.UI.WinForms.GunaTextBox remarkTextBox;
@@ -923,17 +973,20 @@
         private System.Windows.Forms.BindingSource productBindingSource;
         private System.Windows.Forms.ComboBox categoryComboBox;
         private System.Windows.Forms.BindingSource categoryBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn billNoDataGridViewTextBoxColumn;
         private Guna.UI.WinForms.GunaDataGridView showDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn SL;
-        private System.Windows.Forms.DataGridViewTextBoxColumn billNoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn invoiceNoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn supplierIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn productIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn manufactureDateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn expireDateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn unitPriceDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn mRPDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewImageColumn Action;
         private System.Windows.Forms.BindingSource purchaseBindingSource;
+        private System.Windows.Forms.Label MRPErrorLabel;
     }
 }

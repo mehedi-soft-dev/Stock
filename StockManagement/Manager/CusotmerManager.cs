@@ -27,6 +27,11 @@ namespace StockManagement.Manager
             return _cutomerRepository.SearchByName(searchKeyword);
         }
 
+        public Customer SearchById(int id)
+        {
+            return _cutomerRepository.SearchById(id);
+        }
+
         public List<Customer> CustomerComboItem()
         {
             return _cutomerRepository.CustomerComboItem();

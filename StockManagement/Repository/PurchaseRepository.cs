@@ -15,7 +15,12 @@ namespace StockManagement.Repository
 
         public bool AddPurchase(Purchase purchase)
         {
-            string commandString = @"INSERT INTO Purchases (Date, InvoiceNo, SupplierID, ProductID, Quantity, UnitPrice, MRP) VALUES('" + purchase.Date + "','" + purchase.InvoiceNo + "'," + purchase.SupplierID + "," + purchase.ProductID + "," + purchase.Quantity + "," + purchase.UnitPrice + "," + purchase.MRP + ")";
+            string commandString;
+
+            if (purchase.ManufactureDate == null && purchase.ExpireDate == null)
+                commandString = @"INSERT INTO Purchases (Date, InvoiceNo, SupplierID, ProductID, Quantity, UnitPrice, MRP) VALUES('" + purchase.Date + "','" + purchase.InvoiceNo + "'," + purchase.SupplierID + "," + purchase.ProductID + ", " + purchase.Quantity + "," + purchase.UnitPrice + "," + purchase.MRP + ")";
+            else
+                commandString = @"INSERT INTO Purchases (Date, InvoiceNo, SupplierID, ProductID, ManufacturedDate, ExpireDate, Quantity, UnitPrice, MRP) VALUES('" + purchase.Date + "','" + purchase.InvoiceNo + "'," + purchase.SupplierID + "," + purchase.ProductID + ",'"+purchase.ManufactureDate+"','"+purchase.ExpireDate+"', " + purchase.Quantity + "," + purchase.UnitPrice + "," + purchase.MRP + ")";
 
             ConnectionDB connection = new ConnectionDB();
             sqlConnection = connection.CreateConnection();
@@ -75,7 +80,7 @@ namespace StockManagement.Repository
             int qty = 0;
             while (sqlDataReader.Read())
             {
-                qty= Convert.ToInt32(sqlDataReader["Qty"]);
+                qty= Convert.ToInt32(sqlDataReader["Quantity"]);
             }
 
             sqlConnection.Close();

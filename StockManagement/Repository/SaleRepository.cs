@@ -15,7 +15,7 @@ namespace StockManagement.Repository
 
         public bool AddSale(Sale sale)
         {
-            string commandString = @"INSERT INTO Sales (Date, CustomerID, ProductID, Quantity, MRP) VALUES('" + sale.Date + "','" + sale.CustomerID + "'," + sale.ProductID + "," + sale.Quantity + "," + sale.Price + ")";
+            string commandString = @"INSERT INTO Sales (Date, CustomerID, ProductID, Quantity, Price, DiscountPercentage) VALUES('" + sale.Date + "','" + sale.CustomerID + "'," + sale.ProductID + "," + sale.Quantity + "," + sale.Price + ", "+sale.DiscountPercentage+")";
 
             ConnectionDB connection = new ConnectionDB();
             sqlConnection = connection.CreateConnection();

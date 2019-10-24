@@ -19,6 +19,8 @@ namespace StockManagement.Design
         CategoryManager _categoryManager = new CategoryManager();
         ProductManager _productManager = new ProductManager();
         PurchaseManager _purchaseManager = new PurchaseManager();
+        SaleManager _saleManager = new SaleManager();
+        Customer _customer = new Customer();
 
         List<Sale> _saleList = new List<Sale>();
 
@@ -32,13 +34,82 @@ namespace StockManagement.Design
 
         private void addButton_Click(object sender, EventArgs e)
         {
-            Sale sale = new Sale(Convert.ToDateTime(saleDatePicker.Value), Convert.ToInt32(customerComboBox.SelectedValue), Convert.ToInt32(productComboBox.SelectedValue), Convert.ToInt32(quantityTextBox.Text), Convert.ToDouble(MRPTextBox.Text));
-            _saleList.Add(sale);
+            try
+            {
+                if(!IsValid())
+                    return;
 
-            showDataGridView.DataSource = null;
-            showDataGridView.DataSource = _saleList;
-            grandTotalTextBox.Text = GetGrandTotal(_saleList).ToString();
+                Sale sale = new Sale();
+                sale.Date = Convert.ToDateTime(saleDatePicker.Value);
+                sale.CustomerID = Convert.ToInt32(customerComboBox.SelectedValue);
+                sale.ProductID = Convert.ToInt32(productComboBox.SelectedValue);
+                sale.Quantity = Convert.ToInt32(quantityTextBox.Text);
+                sale.Price = Convert.ToDouble(priceTextBox.Text);
+                sale.DiscountPercentage = Convert.ToDouble(discountPercentageTextBox.Text);
 
+                _saleList.Add(sale);
+
+                showDataGridView.DataSource = null;
+                showDataGridView.DataSource = _saleList;
+
+                grandTotalTextBox.Text = GetGrandTotal(_saleList).ToString();
+                discountPercentageTextBox.Text = (_customer.LoyalityPoint / 10).ToString();
+                discountAmountTextBox.Text =
+                    ((Convert.ToInt32(grandTotalTextBox.Text) * Convert.ToInt32(discountPercentageTextBox.Text)) / 100)
+                    .ToString();
+                payableAmountTextBox.Text =
+                    (Convert.ToDouble(grandTotalTextBox.Text) - Convert.ToDouble(discountAmountTextBox.Text))
+                    .ToString();
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+        }
+
+        private bool IsValid()
+        {
+            if (Convert.ToInt32(customerComboBox.SelectedValue) == 0)
+            {
+                customerErrorLabel.Text = "Please Select Customer";
+                return false;
+            }
+            else
+                customerErrorLabel.ResetText();
+
+            if (Convert.ToInt32(categoryComboBox.SelectedValue) == 0)
+            {
+                categoryErrorLabel.Text = "Please Select Category";
+                return false;
+            }
+            else
+                categoryErrorLabel.ResetText();
+
+            if (Convert.ToInt32(productComboBox.SelectedValue) == 0)
+            {
+                productErrorLabel.Text = "Please Select Product";
+                return false;
+            }
+            else
+                productErrorLabel.ResetText();
+
+            if (String.IsNullOrEmpty(quantityTextBox.Text))
+            {
+                quantityErrorLabel.Text = "Please Enter Quantity";
+                return false;
+            }
+            else
+                quantityErrorLabel.ResetText();
+
+            if (String.IsNullOrEmpty(priceTextBox.Text))
+            {
+                quantityErrorLabel.Text = "Please Enter Price";
+                return false;
+            }
+            else
+                quantityErrorLabel.ResetText();
+
+            return true;
         }
 
         private double GetGrandTotal(List<Sale> sales)
@@ -57,15 +128,15 @@ namespace StockManagement.Design
                 _productManager.GetProductsByCategory(Convert.ToInt32(categoryComboBox.SelectedValue));
         }
 
-        private Purchase purchase;
+        private Purchase _purchase;
         private void productComboBox_TextChanged(object sender, EventArgs e)
         {
-             purchase = _purchaseManager.LastPurchaseInfo(Convert.ToInt32(productComboBox.SelectedValue));
+             _purchase = _purchaseManager.LastPurchaseInfo(Convert.ToInt32(productComboBox.SelectedValue));
 
             availableQuantityTextBox.Text =
                 _purchaseManager.AvailableQuantity(Convert.ToInt32(productComboBox.SelectedValue)).ToString();
 
-            MRPTextBox.Text = purchase.MRP.ToString();
+            priceTextBox.Text = _purchase.MRP.ToString();
             quantityTextBox.ResetText();
             totalMRPTextBox.ResetText();
 
@@ -75,7 +146,42 @@ namespace StockManagement.Design
         {
             if (!String.IsNullOrEmpty(quantityTextBox.Text))
             {
-                totalMRPTextBox.Text = (Convert.ToInt32(quantityTextBox.Text) * purchase.MRP).ToString();
+                quantityErrorLabel.ResetText();
+                totalMRPTextBox.Text = (Convert.ToInt32(quantityTextBox.Text) * _purchase.MRP).ToString();
+            }
+            else
+            {
+                totalMRPTextBox.ResetText();
+            }
+        }
+
+        private void customerComboBox_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                _customer = _cusotmerManager.SearchById(Convert.ToInt32(customerComboBox.SelectedValue));
+                loyalityPointTextBox.Text = _customer.LoyalityPoint.ToString();
+                customerErrorLabel.ResetText();
+
+                _saleList.Clear();
+                showDataGridView.DataSource = null;
+                showDataGridView.DataSource = _saleList;
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+            
+            
+        }
+
+        private void submitButton_Click(object sender, EventArgs e)
+        {
+            if (_saleManager.AddSale(_saleList))
+                MessageBox.Show("Successfully sold..!", "Sale", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            else
+            {
+                MessageBox.Show("Failed..!", "Sale", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

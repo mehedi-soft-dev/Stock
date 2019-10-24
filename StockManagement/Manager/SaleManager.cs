@@ -12,9 +12,14 @@ namespace StockManagement.Manager
     {
         SaleRepository _saleRepository = new SaleRepository();
 
-        public bool AddSale(Sale sale)
+        public bool AddSale(List<Sale> sales)
         {
-            return _saleRepository.AddSale(sale);
+            bool isAdded = false;
+            foreach (Sale sale in sales)
+            {
+                isAdded = _saleRepository.AddSale(sale);
+            }
+            return isAdded;
         } 
     }
 }
