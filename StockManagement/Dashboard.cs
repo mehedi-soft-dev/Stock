@@ -108,11 +108,11 @@ namespace StockManagement
 
         private void orderButton_Click(object sender, EventArgs e)
         {
-            sideBarPanel.Height = orderButton.Height;
-            sideBarPanel.Top = orderButton.Top;
+            //sideBarPanel.Height = orderButton.Height;
+            //sideBarPanel.Top = orderButton.Top;
 
-            OrderProductUserControl orderPurchaseUserControl = new OrderProductUserControl();
-            ShowControl(orderPurchaseUserControl);
+            //OrderProductUserControl orderPurchaseUserControl = new OrderProductUserControl();
+            //ShowControl(orderPurchaseUserControl);
         }
 
         private void stockButton_Click(object sender, EventArgs e)

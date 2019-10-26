@@ -77,12 +77,14 @@
             this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TotalPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.saleBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.productBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.showDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.saleBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -221,6 +223,7 @@
             // 
             // productComboBox
             // 
+            this.productComboBox.DataSource = this.productBindingSource;
             this.productComboBox.DisplayMember = "Name";
             this.productComboBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.productComboBox.FormattingEnabled = true;
@@ -310,6 +313,7 @@
             this.priceTextBox.PasswordChar = '\0';
             this.priceTextBox.Size = new System.Drawing.Size(175, 26);
             this.priceTextBox.TabIndex = 5;
+            this.priceTextBox.Leave += new System.EventHandler(this.priceTextBox_Leave);
             // 
             // label10
             // 
@@ -693,6 +697,10 @@
             // 
             this.saleBindingSource.DataSource = typeof(StockManagement.Model.Sale);
             // 
+            // productBindingSource
+            // 
+            this.productBindingSource.DataSource = typeof(StockManagement.Model.Product);
+            // 
             // SalesUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -712,6 +720,7 @@
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.showDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.saleBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -763,5 +772,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TotalPrice;
         private System.Windows.Forms.BindingSource saleBindingSource;
         private System.Windows.Forms.Label priceErrorLabel;
+        private System.Windows.Forms.BindingSource productBindingSource;
     }
 }

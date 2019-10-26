@@ -60,6 +60,37 @@ namespace StockManagement.Design
                 payableAmountTextBox.Text =
                     (Convert.ToDouble(grandTotalTextBox.Text) - Convert.ToDouble(discountAmountTextBox.Text))
                     .ToString();
+
+                Reset();
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+        }
+
+        private void submitButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (_saleList.Count == 0)
+                {
+                    MessageBox.Show("Please Add Item First...!!", "Warning", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                    return;
+                }
+
+                if (_saleManager.AddSale(_saleList))
+                {
+                    MessageBox.Show("Successfully sold..!", "Sale", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    _saleList.Clear();
+                    customerComboBox.SelectedValue = 0;
+                    Reset();
+                }
+                else
+                {
+                    MessageBox.Show("Failed..!", "Sale", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             catch (Exception exception)
             {
@@ -112,6 +143,14 @@ namespace StockManagement.Design
             return true;
         }
 
+        private void Reset()
+        {
+            categoryComboBox.SelectedValue = 0;
+            quantityTextBox.ResetText();
+            priceTextBox.ResetText();
+            totalMRPTextBox.ResetText();
+        }
+
         private double GetGrandTotal(List<Sale> sales)
         {
             double grandTotal = 0;
@@ -139,6 +178,7 @@ namespace StockManagement.Design
             priceTextBox.Text = _purchase.MRP.ToString();
             quantityTextBox.ResetText();
             totalMRPTextBox.ResetText();
+            productErrorLabel.ResetText();
 
         }
 
@@ -175,13 +215,11 @@ namespace StockManagement.Design
             
         }
 
-        private void submitButton_Click(object sender, EventArgs e)
+        private void priceTextBox_Leave(object sender, EventArgs e)
         {
-            if (_saleManager.AddSale(_saleList))
-                MessageBox.Show("Successfully sold..!", "Sale", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            else
+            if (!String.IsNullOrEmpty(priceTextBox.Text))
             {
-                MessageBox.Show("Failed..!", "Sale", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                totalMRPTextBox.Text = (Convert.ToInt32(quantityTextBox.Text) * Convert.ToInt32(priceTextBox.Text)).ToString();
             }
         }
     }
