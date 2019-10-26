@@ -68,7 +68,7 @@ INSERT INTO Purchases (Date, InvoiceNo, SupplierID, ProductID, ManufacturedDate,
 
 DROP TABLE Purchases
 
-SELECT * FROM Purchases
+SELECT * FROM Purchases WHERE Date = '2019-10-22'
 
 DELETE FROM Purchases
 
@@ -82,7 +82,7 @@ SELECT p.ProductID AS ProductID, SUM(p.Quantity) - ISNULL(SUM(s.Quantity),0) As 
 LEFT JOIN Sales AS s ON p.ProductID = s.ProductID 
 GROUP BY p.ProductID
 
-Select * FROM AvailableQuantity WHERE Product = 1
+Select * FROM AvailableQuantity WHERE ProductID = 1
 
 DROP VIEW AvailableQuantity
 
@@ -116,4 +116,41 @@ SELECT * FROM Sales
 DELETE FROM Sales
 
 DROP TABLE Sales
+
+CREATE VIEW Stock
+AS
+SELECT pr.ID AS ID, pr.Code AS Code, pr.Name AS Product, ISNUll(SUM(p.Quantity),0) AS "IN", ISNUll(SUM(s.Quantity),0) AS "OUT" FROM Products AS pr
+LEFT JOIN Purchases As p ON  pr.ID = p.ProductID
+LEFT JOIN Sales AS s ON pr.ID = s.ProductID 
+GROUP BY pr.ID, pr.Code, pr.Name
+
+SELECT * FROM Stock WHERE ID BETWEEN 1 AND 3
+
+CREATE VIEW ST
+AS
+SELECT pr.ID AS ID, pr.Code AS Code, pr.Name AS Name, p.Date AS PDate, s.Date AS SDate, ISNUll(SUM(p.Quantity),0) AS "StockIn", ISNUll(SUM(s.Quantity),0) AS "StockOut", ISNULL(Sum(p.Quantity),0)-ISNULL(SUM(s.Quantity),0) AS "ClosingBalance" FROM Products AS pr
+LEFT JOIN Purchases As p ON  pr.ID = p.ProductID
+LEFT JOIN Sales AS s ON pr.ID = s.ProductID
+--WHERE (p.Date  PDate BETWEEN '2019-10-17' AND '2019-10-30') OR (s.Date AS SDate BETWEEN '2019-10-17' AND '2019-10-30')
+GROUP BY pr.ID, pr.Code, pr.Name, s.Date, p.Date
+
+Drop VIEW ST
+
+SELECT ID, Code,Sum(StockIn) AS "IN", Sum(StockOut) AS "OUT", Sum(ClosingBalance) AS "Closing Balance" FROM ST
+WHERE (PDate BETWEEN '2019-10-27' AND '2019-10-28') --AND (SDate BETWEEN '2019-10-17' AND '2019-10-17')
+GROUP BY ID, Code
+
+
+SELECT ID, ISNULL(Sum(Quantity),0) FROM Purchases
+WHERE Date > '2019-10-27' --AND '2019-10-30'
+GROUP BY ID
+
+
+DROP VIEW Stock
+
+
+SELECT pr.ID AS ID, pr.Code AS Code, ISNUll(SUM(p.Quantity),0) AS "Total IN", ISNULL(SUM(s.Quantity),0) As "Total Out" From Products AS pr
+LEFT JOIN Sales AS s ON  ID = s.ProductID
+LEFT JOIN Purchases AS p ON ID =  p.ProductID
+GROUP BY Code
 

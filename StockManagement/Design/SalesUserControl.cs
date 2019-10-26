@@ -38,6 +38,11 @@ namespace StockManagement.Design
             {
                 if(!IsValid())
                     return;
+                if (Convert.ToInt32(quantityTextBox.Text) > Convert.ToInt32(availableQuantityTextBox.Text))
+                {
+                    MessageBox.Show("Not Enough Product..!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    return;
+                }
 
                 Sale sale = new Sale();
                 sale.Date = Convert.ToDateTime(saleDatePicker.Value);

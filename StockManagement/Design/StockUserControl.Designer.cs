@@ -28,13 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.showDataGridView = new Guna.UI.WinForms.GunaDataGridView();
-            this.SL = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Action = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.startDatePicker = new System.Windows.Forms.DateTimePicker();
             this.endDatePicker = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
@@ -43,8 +42,17 @@
             this.productTextBox = new Guna.UI.WinForms.GunaTextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.stockBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.SL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.openingBalanceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.inDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.outDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.closingBalanaceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.showDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stockBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -58,10 +66,14 @@
             // 
             // showDataGridView
             // 
+            this.showDataGridView.AllowUserToAddRows = false;
+            this.showDataGridView.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(224)))), ((int)(((byte)(244)))));
             this.showDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.showDataGridView.AutoGenerateColumns = false;
             this.showDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.showDataGridView.BackgroundColor = System.Drawing.Color.White;
+            this.showDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.showDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.showDataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -72,10 +84,16 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.showDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.showDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.showDataGridView.ColumnHeadersHeight = 40;
             this.showDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.SL,
-            this.Action});
+            this.codeDataGridViewTextBoxColumn,
+            this.nameDataGridViewTextBoxColumn,
+            this.openingBalanceDataGridViewTextBoxColumn,
+            this.inDataGridViewTextBoxColumn,
+            this.outDataGridViewTextBoxColumn,
+            this.closingBalanaceDataGridViewTextBoxColumn});
+            this.showDataGridView.DataSource = this.stockBindingSource;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(234)))), ((int)(((byte)(247)))));
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.5F);
@@ -88,6 +106,7 @@
             this.showDataGridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(220)))), ((int)(((byte)(242)))));
             this.showDataGridView.Location = new System.Drawing.Point(3, 3);
             this.showDataGridView.Name = "showDataGridView";
+            this.showDataGridView.ReadOnly = true;
             this.showDataGridView.RowHeadersVisible = false;
             this.showDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.showDataGridView.Size = new System.Drawing.Size(840, 372);
@@ -104,9 +123,9 @@
             this.showDataGridView.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.showDataGridView.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 10.5F);
             this.showDataGridView.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
-            this.showDataGridView.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.showDataGridView.ThemeStyle.HeaderStyle.Height = 21;
-            this.showDataGridView.ThemeStyle.ReadOnly = false;
+            this.showDataGridView.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            this.showDataGridView.ThemeStyle.HeaderStyle.Height = 40;
+            this.showDataGridView.ThemeStyle.ReadOnly = true;
             this.showDataGridView.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(234)))), ((int)(((byte)(247)))));
             this.showDataGridView.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.showDataGridView.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 10.5F);
@@ -114,18 +133,6 @@
             this.showDataGridView.ThemeStyle.RowsStyle.Height = 22;
             this.showDataGridView.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(186)))), ((int)(((byte)(231)))));
             this.showDataGridView.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
-            // 
-            // SL
-            // 
-            this.SL.HeaderText = "SL";
-            this.SL.Name = "SL";
-            this.SL.ReadOnly = true;
-            // 
-            // Action
-            // 
-            this.Action.HeaderText = "Action";
-            this.Action.Name = "Action";
-            this.Action.ReadOnly = true;
             // 
             // startDatePicker
             // 
@@ -221,6 +228,65 @@
             this.label4.TabIndex = 7;
             this.label4.Text = "End Date";
             // 
+            // stockBindingSource
+            // 
+            this.stockBindingSource.DataSource = typeof(StockManagement.Model.Stock);
+            // 
+            // SL
+            // 
+            this.SL.FillWeight = 121.8274F;
+            this.SL.HeaderText = "SL";
+            this.SL.Name = "SL";
+            this.SL.ReadOnly = true;
+            // 
+            // codeDataGridViewTextBoxColumn
+            // 
+            this.codeDataGridViewTextBoxColumn.DataPropertyName = "Code";
+            this.codeDataGridViewTextBoxColumn.FillWeight = 96.8818F;
+            this.codeDataGridViewTextBoxColumn.HeaderText = "Code";
+            this.codeDataGridViewTextBoxColumn.Name = "codeDataGridViewTextBoxColumn";
+            this.codeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.FillWeight = 96.8818F;
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // openingBalanceDataGridViewTextBoxColumn
+            // 
+            this.openingBalanceDataGridViewTextBoxColumn.DataPropertyName = "OpeningBalance";
+            this.openingBalanceDataGridViewTextBoxColumn.FillWeight = 96.8818F;
+            this.openingBalanceDataGridViewTextBoxColumn.HeaderText = "Opening Balance";
+            this.openingBalanceDataGridViewTextBoxColumn.Name = "openingBalanceDataGridViewTextBoxColumn";
+            this.openingBalanceDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // inDataGridViewTextBoxColumn
+            // 
+            this.inDataGridViewTextBoxColumn.DataPropertyName = "In";
+            this.inDataGridViewTextBoxColumn.FillWeight = 96.8818F;
+            this.inDataGridViewTextBoxColumn.HeaderText = "In";
+            this.inDataGridViewTextBoxColumn.Name = "inDataGridViewTextBoxColumn";
+            this.inDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // outDataGridViewTextBoxColumn
+            // 
+            this.outDataGridViewTextBoxColumn.DataPropertyName = "Out";
+            this.outDataGridViewTextBoxColumn.FillWeight = 96.8818F;
+            this.outDataGridViewTextBoxColumn.HeaderText = "Out";
+            this.outDataGridViewTextBoxColumn.Name = "outDataGridViewTextBoxColumn";
+            this.outDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // closingBalanaceDataGridViewTextBoxColumn
+            // 
+            this.closingBalanaceDataGridViewTextBoxColumn.DataPropertyName = "ClosingBalanace";
+            this.closingBalanaceDataGridViewTextBoxColumn.FillWeight = 96.8818F;
+            this.closingBalanaceDataGridViewTextBoxColumn.HeaderText = "Closing Balanace";
+            this.closingBalanaceDataGridViewTextBoxColumn.Name = "closingBalanaceDataGridViewTextBoxColumn";
+            this.closingBalanaceDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
             // StockUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -239,6 +305,7 @@
             this.Size = new System.Drawing.Size(881, 570);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.showDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stockBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -248,8 +315,6 @@
 
         private System.Windows.Forms.Panel panel1;
         private Guna.UI.WinForms.GunaDataGridView showDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SL;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Action;
         private System.Windows.Forms.DateTimePicker startDatePicker;
         private System.Windows.Forms.DateTimePicker endDatePicker;
         private System.Windows.Forms.Label label1;
@@ -258,5 +323,13 @@
         private Guna.UI.WinForms.GunaTextBox productTextBox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.BindingSource stockBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SL;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn openingBalanceDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn inDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn outDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn closingBalanaceDataGridViewTextBoxColumn;
     }
 }
