@@ -39,10 +39,7 @@
             this.searchTextBox = new Guna.UI.WinForms.GunaTextBox();
             this.showDataGridView = new Guna.UI.WinForms.GunaDataGridView();
             this.SL = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Edit = new System.Windows.Forms.DataGridViewImageColumn();
-            this.categoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gunaPanel4 = new Guna.UI.WinForms.GunaPanel();
             this.gunaLabel5 = new Guna.UI.WinForms.GunaLabel();
             this.gunaPanel2 = new Guna.UI.WinForms.GunaPanel();
@@ -55,13 +52,15 @@
             this.saveButton = new Guna.UI.WinForms.GunaButton();
             this.nameTextBox = new Guna.UI.WinForms.GunaTextBox();
             this.codeTextBox = new Guna.UI.WinForms.GunaTextBox();
-            this.refreshButton = new Guna.UI.WinForms.GunaButton();
+            this.codeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.categoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gunaPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.showDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource)).BeginInit();
             this.gunaPanel4.SuspendLayout();
             this.gunaPanel2.SuspendLayout();
             this.gunaPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // gunaPanel1
@@ -192,6 +191,7 @@
             this.showDataGridView.ThemeStyle.RowsStyle.Height = 25;
             this.showDataGridView.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(186)))), ((int)(((byte)(231)))));
             this.showDataGridView.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
+            this.showDataGridView.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.showDataGridView_RowPostPaint);
             // 
             // SL
             // 
@@ -200,22 +200,6 @@
             this.SL.Name = "SL";
             this.SL.ReadOnly = true;
             // 
-            // codeDataGridViewTextBoxColumn
-            // 
-            this.codeDataGridViewTextBoxColumn.DataPropertyName = "Code";
-            this.codeDataGridViewTextBoxColumn.FillWeight = 99.49239F;
-            this.codeDataGridViewTextBoxColumn.HeaderText = "Code";
-            this.codeDataGridViewTextBoxColumn.Name = "codeDataGridViewTextBoxColumn";
-            this.codeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn.FillWeight = 99.49239F;
-            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
             // Edit
             // 
             this.Edit.HeaderText = "Edit";
@@ -223,10 +207,6 @@
             this.Edit.Name = "Edit";
             this.Edit.ReadOnly = true;
             this.Edit.ToolTipText = "Edit Category";
-            // 
-            // categoryBindingSource
-            // 
-            this.categoryBindingSource.DataSource = typeof(StockManagement.Model.Category);
             // 
             // gunaPanel4
             // 
@@ -373,6 +353,7 @@
             this.nameTextBox.PasswordChar = '\0';
             this.nameTextBox.Size = new System.Drawing.Size(178, 26);
             this.nameTextBox.TabIndex = 1;
+            this.nameTextBox.TextChanged += new System.EventHandler(this.nameTextBox_TextChanged);
             // 
             // codeTextBox
             // 
@@ -393,35 +374,33 @@
             this.codeTextBox.PasswordChar = '\0';
             this.codeTextBox.Size = new System.Drawing.Size(178, 26);
             this.codeTextBox.TabIndex = 0;
+            this.codeTextBox.Leave += new System.EventHandler(this.codeTextBox_Leave);
             // 
-            // refreshButton
+            // codeDataGridViewTextBoxColumn
             // 
-            this.refreshButton.AnimationHoverSpeed = 0.07F;
-            this.refreshButton.AnimationSpeed = 0.03F;
-            this.refreshButton.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(181)))));
-            this.refreshButton.BorderColor = System.Drawing.Color.Black;
-            this.refreshButton.FocusedColor = System.Drawing.Color.Empty;
-            this.refreshButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.refreshButton.ForeColor = System.Drawing.Color.White;
-            this.refreshButton.Image = ((System.Drawing.Image)(resources.GetObject("refreshButton.Image")));
-            this.refreshButton.ImageSize = new System.Drawing.Size(20, 20);
-            this.refreshButton.Location = new System.Drawing.Point(731, 51);
-            this.refreshButton.Name = "refreshButton";
-            this.refreshButton.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(181)))));
-            this.refreshButton.OnHoverBorderColor = System.Drawing.Color.Black;
-            this.refreshButton.OnHoverForeColor = System.Drawing.Color.White;
-            this.refreshButton.OnHoverImage = null;
-            this.refreshButton.OnPressedColor = System.Drawing.Color.Black;
-            this.refreshButton.Size = new System.Drawing.Size(125, 28);
-            this.refreshButton.TabIndex = 5;
-            this.refreshButton.Text = "Refresh";
+            this.codeDataGridViewTextBoxColumn.DataPropertyName = "Code";
+            this.codeDataGridViewTextBoxColumn.FillWeight = 99.49239F;
+            this.codeDataGridViewTextBoxColumn.HeaderText = "Code";
+            this.codeDataGridViewTextBoxColumn.Name = "codeDataGridViewTextBoxColumn";
+            this.codeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.FillWeight = 99.49239F;
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // categoryBindingSource
+            // 
+            this.categoryBindingSource.DataSource = typeof(StockManagement.Model.Category);
             // 
             // CategoryUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.refreshButton);
             this.Controls.Add(this.gunaPanel2);
             this.Controls.Add(this.gunaPanel1);
             this.Name = "CategoryUserControl";
@@ -429,13 +408,13 @@
             this.gunaPanel1.ResumeLayout(false);
             this.gunaPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.showDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource)).EndInit();
             this.gunaPanel4.ResumeLayout(false);
             this.gunaPanel4.PerformLayout();
             this.gunaPanel2.ResumeLayout(false);
             this.gunaPanel2.PerformLayout();
             this.gunaPanel3.ResumeLayout(false);
             this.gunaPanel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -457,7 +436,6 @@
         private Guna.UI.WinForms.GunaTextBox codeTextBox;
         private System.Windows.Forms.Label nameErrorLabel;
         private System.Windows.Forms.Label codeErrorLabel;
-        private Guna.UI.WinForms.GunaButton refreshButton;
         private System.Windows.Forms.BindingSource categoryBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn SL;
         private System.Windows.Forms.DataGridViewTextBoxColumn codeDataGridViewTextBoxColumn;

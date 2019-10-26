@@ -56,4 +56,6 @@ C:\Users\Web App Develop .Net\Desktop\Day18\StockManagement\StockManagement\bin\
 C:\Users\Web App Develop .Net\Desktop\Day18\StockManagement\StockManagement\bin\Debug\StockManagement.exe
 C:\Users\Web App Develop .Net\Desktop\Day18\StockManagement\StockManagement\bin\Debug\StockManagement.pdb
 C:\Users\Web App Develop .Net\Desktop\Day18\StockManagement\StockManagement\obj\Debug\StockManagement.csproj.CopyComplete
-D:\GitHubProject\StockManagement\StockManagement\obj\Debug\StockManagement.csprojAssemblyReference.cache
+D:\GitHubProject\StockManagement\StockManagement\obj\Debug\StockManagement.Design.ReportOnPurchaseUserControl.resources
+D:\GitHubProject\StockManagement\StockManagement\obj\Debug\StockManagement.Design.ReportUserControl.resources
+D:\GitHubProject\StockManagement\StockManagement\obj\Debug\StockManagement.Design.ReportOnSaleUserControl.resources

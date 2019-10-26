@@ -11,6 +11,8 @@ namespace StockManagement.Repository
 {
     public class ProductRepository
     {
+        private static SqlConnection sqlConnection = null;
+
         public bool AddProduct(Product product)
         {
             string commandString = @"INSERT INTO Products (CategoryID, Code, Name, ReOrderLevel, Description) VALUES('"+product.CategoryID+"', '" + product.Code + "','" + product.Name + "', "+product.ReOrderLevel+", '"+product.Description+"')";
@@ -133,6 +135,78 @@ namespace StockManagement.Repository
             }
 
             return product;
+        }
+
+        public bool IsCodeExist(string code)
+        {
+            string commandString = @"SELECT * FROM Products WHERE Code = '" + code + "'";
+            ConnectionDB connection = new ConnectionDB();
+            sqlConnection = connection.CreateConnection();
+
+            SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
+
+            sqlConnection.Open();
+            SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+            
+
+            if (sqlDataReader.Read())
+                return true;
+            else
+                return false;
+
+            sqlConnection.Close();
+        }
+
+        public bool IsNameExist(string name)
+        {
+            string commandString = @"SELECT * FROM Products WHERE Name = '" + name + "'";
+            ConnectionDB connection = new ConnectionDB();
+            sqlConnection = connection.CreateConnection();
+
+            SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
+
+            sqlConnection.Open();
+            SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+            
+
+            if (sqlDataReader.Read())
+                return true;
+            else
+                return false;
+            sqlConnection.Close();
+        }
+
+        public List<Product> Search(string searchKeyword)
+        {
+            List<Product> products = new List<Product>();
+
+            string commandString = @"SELECT * FROM Products WHERE Name LIKE '%" + searchKeyword + "%' OR Code LIKE '%" + searchKeyword + "%'";
+            ConnectionDB connection = new ConnectionDB();
+            sqlConnection = connection.CreateConnection();
+
+            SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
+
+            sqlConnection.Open();
+
+            SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+
+            while (sqlDataReader.Read())
+            {
+                Product product = new Product();
+
+                product.ID = Convert.ToInt32(sqlDataReader["ID"]);
+                product.Code = sqlDataReader["Code"].ToString();
+                product.Name = sqlDataReader["Name"].ToString();
+                product.CategoryID = Convert.ToInt32(sqlDataReader["CategoryID"]);
+                product.ReOrderLevel = Convert.ToInt32(sqlDataReader["ReOrderLevel"]);
+                product.Description = sqlDataReader["Description"].ToString();
+
+                products.Add(product);
+            }
+
+            sqlConnection.Close();
+
+            return products;
         }
     }
 }

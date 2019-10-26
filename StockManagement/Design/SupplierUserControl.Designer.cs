@@ -28,18 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SupplierUserControl));
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.refreshButton = new Guna.UI.WinForms.GunaButton();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SupplierUserControl));
             this.gunaPanel1 = new Guna.UI.WinForms.GunaPanel();
             this.gunaLabel3 = new Guna.UI.WinForms.GunaLabel();
             this.searchTextBox = new Guna.UI.WinForms.GunaTextBox();
             this.showDataGridView = new Guna.UI.WinForms.GunaDataGridView();
             this.SL = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Action = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Action = new System.Windows.Forms.DataGridViewImageColumn();
             this.gunaPanel4 = new Guna.UI.WinForms.GunaPanel();
             this.gunaLabel5 = new Guna.UI.WinForms.GunaLabel();
             this.gunaPanel2 = new Guna.UI.WinForms.GunaPanel();
@@ -65,34 +65,20 @@
             this.addressTextBox = new Guna.UI.WinForms.GunaTextBox();
             this.nameTextBox = new Guna.UI.WinForms.GunaTextBox();
             this.codeTextBox = new Guna.UI.WinForms.GunaTextBox();
+            this.codeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.addressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contactDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contactPersonDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.supplierBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gunaPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.showDataGridView)).BeginInit();
             this.gunaPanel4.SuspendLayout();
             this.gunaPanel2.SuspendLayout();
             this.gunaPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.supplierBindingSource)).BeginInit();
             this.SuspendLayout();
-            // 
-            // refreshButton
-            // 
-            this.refreshButton.AnimationHoverSpeed = 0.07F;
-            this.refreshButton.AnimationSpeed = 0.03F;
-            this.refreshButton.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(181)))));
-            this.refreshButton.BorderColor = System.Drawing.Color.Black;
-            this.refreshButton.FocusedColor = System.Drawing.Color.Empty;
-            this.refreshButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.refreshButton.ForeColor = System.Drawing.Color.White;
-            this.refreshButton.Image = ((System.Drawing.Image)(resources.GetObject("refreshButton.Image")));
-            this.refreshButton.ImageSize = new System.Drawing.Size(20, 20);
-            this.refreshButton.Location = new System.Drawing.Point(731, 51);
-            this.refreshButton.Name = "refreshButton";
-            this.refreshButton.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(181)))));
-            this.refreshButton.OnHoverBorderColor = System.Drawing.Color.Black;
-            this.refreshButton.OnHoverForeColor = System.Drawing.Color.White;
-            this.refreshButton.OnHoverImage = null;
-            this.refreshButton.OnPressedColor = System.Drawing.Color.Black;
-            this.refreshButton.Size = new System.Drawing.Size(125, 28);
-            this.refreshButton.TabIndex = 8;
-            this.refreshButton.Text = "Refresh";
             // 
             // gunaPanel1
             // 
@@ -135,6 +121,7 @@
             this.searchTextBox.Radius = 12;
             this.searchTextBox.Size = new System.Drawing.Size(157, 26);
             this.searchTextBox.TabIndex = 6;
+            this.searchTextBox.TextChanged += new System.EventHandler(this.searchTextBox_TextChanged);
             // 
             // showDataGridView
             // 
@@ -143,6 +130,7 @@
             this.showDataGridView.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(224)))), ((int)(((byte)(244)))));
             this.showDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.showDataGridView.AutoGenerateColumns = false;
             this.showDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.showDataGridView.BackgroundColor = System.Drawing.Color.White;
             this.showDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -160,7 +148,14 @@
             this.showDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.showDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.SL,
+            this.codeDataGridViewTextBoxColumn,
+            this.nameDataGridViewTextBoxColumn,
+            this.addressDataGridViewTextBoxColumn,
+            this.contactDataGridViewTextBoxColumn,
+            this.emailDataGridViewTextBoxColumn,
+            this.contactPersonDataGridViewTextBoxColumn,
             this.Action});
+            this.showDataGridView.DataSource = this.supplierBindingSource;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(234)))), ((int)(((byte)(247)))));
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.5F);
@@ -215,6 +210,7 @@
             this.showDataGridView.ThemeStyle.RowsStyle.Height = 25;
             this.showDataGridView.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(186)))), ((int)(((byte)(231)))));
             this.showDataGridView.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
+            this.showDataGridView.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.showDataGridView_RowPostPaint);
             // 
             // SL
             // 
@@ -225,8 +221,11 @@
             // Action
             // 
             this.Action.HeaderText = "Action";
+            this.Action.Image = ((System.Drawing.Image)(resources.GetObject("Action.Image")));
             this.Action.Name = "Action";
             this.Action.ReadOnly = true;
+            this.Action.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Action.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // gunaPanel4
             // 
@@ -296,9 +295,8 @@
             this.contactPersonErrorLabel.ForeColor = System.Drawing.Color.Red;
             this.contactPersonErrorLabel.Location = new System.Drawing.Point(90, 288);
             this.contactPersonErrorLabel.Name = "contactPersonErrorLabel";
-            this.contactPersonErrorLabel.Size = new System.Drawing.Size(33, 13);
+            this.contactPersonErrorLabel.Size = new System.Drawing.Size(0, 13);
             this.contactPersonErrorLabel.TabIndex = 10;
-            this.contactPersonErrorLabel.Text = "Hello";
             // 
             // contactErrorLabel
             // 
@@ -307,9 +305,8 @@
             this.contactErrorLabel.ForeColor = System.Drawing.Color.Red;
             this.contactErrorLabel.Location = new System.Drawing.Point(90, 246);
             this.contactErrorLabel.Name = "contactErrorLabel";
-            this.contactErrorLabel.Size = new System.Drawing.Size(33, 13);
+            this.contactErrorLabel.Size = new System.Drawing.Size(0, 13);
             this.contactErrorLabel.TabIndex = 10;
-            this.contactErrorLabel.Text = "Hello";
             // 
             // emailErrorLabel
             // 
@@ -318,9 +315,8 @@
             this.emailErrorLabel.ForeColor = System.Drawing.Color.Red;
             this.emailErrorLabel.Location = new System.Drawing.Point(90, 202);
             this.emailErrorLabel.Name = "emailErrorLabel";
-            this.emailErrorLabel.Size = new System.Drawing.Size(33, 13);
+            this.emailErrorLabel.Size = new System.Drawing.Size(0, 13);
             this.emailErrorLabel.TabIndex = 10;
-            this.emailErrorLabel.Text = "Hello";
             // 
             // addressErrorLabel
             // 
@@ -329,9 +325,8 @@
             this.addressErrorLabel.ForeColor = System.Drawing.Color.Red;
             this.addressErrorLabel.Location = new System.Drawing.Point(90, 160);
             this.addressErrorLabel.Name = "addressErrorLabel";
-            this.addressErrorLabel.Size = new System.Drawing.Size(33, 13);
+            this.addressErrorLabel.Size = new System.Drawing.Size(0, 13);
             this.addressErrorLabel.TabIndex = 10;
-            this.addressErrorLabel.Text = "Hello";
             // 
             // nameErrorLabel
             // 
@@ -340,9 +335,8 @@
             this.nameErrorLabel.ForeColor = System.Drawing.Color.Red;
             this.nameErrorLabel.Location = new System.Drawing.Point(90, 117);
             this.nameErrorLabel.Name = "nameErrorLabel";
-            this.nameErrorLabel.Size = new System.Drawing.Size(33, 13);
+            this.nameErrorLabel.Size = new System.Drawing.Size(0, 13);
             this.nameErrorLabel.TabIndex = 9;
-            this.nameErrorLabel.Text = "Hello";
             // 
             // codeErrorLabel
             // 
@@ -351,9 +345,8 @@
             this.codeErrorLabel.ForeColor = System.Drawing.Color.Red;
             this.codeErrorLabel.Location = new System.Drawing.Point(90, 75);
             this.codeErrorLabel.Name = "codeErrorLabel";
-            this.codeErrorLabel.Size = new System.Drawing.Size(33, 13);
+            this.codeErrorLabel.Size = new System.Drawing.Size(0, 13);
             this.codeErrorLabel.TabIndex = 7;
-            this.codeErrorLabel.Text = "Hello";
             // 
             // categoryErrorLabel
             // 
@@ -506,6 +499,7 @@
             this.contactTextBox.PasswordChar = '\0';
             this.contactTextBox.Size = new System.Drawing.Size(178, 26);
             this.contactTextBox.TabIndex = 4;
+            this.contactTextBox.TextChanged += new System.EventHandler(this.contactTextBox_TextChanged);
             // 
             // emailTextBox
             // 
@@ -526,6 +520,7 @@
             this.emailTextBox.PasswordChar = '\0';
             this.emailTextBox.Size = new System.Drawing.Size(178, 26);
             this.emailTextBox.TabIndex = 3;
+            this.emailTextBox.TextChanged += new System.EventHandler(this.emailTextBox_TextChanged);
             // 
             // addressTextBox
             // 
@@ -566,6 +561,7 @@
             this.nameTextBox.PasswordChar = '\0';
             this.nameTextBox.Size = new System.Drawing.Size(178, 26);
             this.nameTextBox.TabIndex = 1;
+            this.nameTextBox.TextChanged += new System.EventHandler(this.nameTextBox_TextChanged);
             // 
             // codeTextBox
             // 
@@ -586,12 +582,58 @@
             this.codeTextBox.PasswordChar = '\0';
             this.codeTextBox.Size = new System.Drawing.Size(178, 26);
             this.codeTextBox.TabIndex = 0;
+            this.codeTextBox.TextChanged += new System.EventHandler(this.codeTextBox_TextChanged);
+            // 
+            // codeDataGridViewTextBoxColumn
+            // 
+            this.codeDataGridViewTextBoxColumn.DataPropertyName = "Code";
+            this.codeDataGridViewTextBoxColumn.HeaderText = "Code";
+            this.codeDataGridViewTextBoxColumn.Name = "codeDataGridViewTextBoxColumn";
+            this.codeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // addressDataGridViewTextBoxColumn
+            // 
+            this.addressDataGridViewTextBoxColumn.DataPropertyName = "Address";
+            this.addressDataGridViewTextBoxColumn.HeaderText = "Address";
+            this.addressDataGridViewTextBoxColumn.Name = "addressDataGridViewTextBoxColumn";
+            this.addressDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // contactDataGridViewTextBoxColumn
+            // 
+            this.contactDataGridViewTextBoxColumn.DataPropertyName = "Contact";
+            this.contactDataGridViewTextBoxColumn.HeaderText = "Contact";
+            this.contactDataGridViewTextBoxColumn.Name = "contactDataGridViewTextBoxColumn";
+            this.contactDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // emailDataGridViewTextBoxColumn
+            // 
+            this.emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
+            this.emailDataGridViewTextBoxColumn.HeaderText = "Email";
+            this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
+            this.emailDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // contactPersonDataGridViewTextBoxColumn
+            // 
+            this.contactPersonDataGridViewTextBoxColumn.DataPropertyName = "ContactPerson";
+            this.contactPersonDataGridViewTextBoxColumn.HeaderText = "ContactPerson";
+            this.contactPersonDataGridViewTextBoxColumn.Name = "contactPersonDataGridViewTextBoxColumn";
+            this.contactPersonDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // supplierBindingSource
+            // 
+            this.supplierBindingSource.DataSource = typeof(StockManagement.Model.Supplier);
             // 
             // SupplierUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.refreshButton);
             this.Controls.Add(this.gunaPanel1);
             this.Controls.Add(this.gunaPanel2);
             this.Name = "SupplierUserControl";
@@ -605,19 +647,16 @@
             this.gunaPanel2.PerformLayout();
             this.gunaPanel3.ResumeLayout(false);
             this.gunaPanel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.supplierBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private Guna.UI.WinForms.GunaButton refreshButton;
         private Guna.UI.WinForms.GunaPanel gunaPanel1;
         private Guna.UI.WinForms.GunaLabel gunaLabel3;
         private Guna.UI.WinForms.GunaTextBox searchTextBox;
         public Guna.UI.WinForms.GunaDataGridView showDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SL;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Action;
         private Guna.UI.WinForms.GunaPanel gunaPanel4;
         private Guna.UI.WinForms.GunaLabel gunaLabel5;
         private Guna.UI.WinForms.GunaPanel gunaPanel2;
@@ -643,5 +682,14 @@
         private Guna.UI.WinForms.GunaTextBox addressTextBox;
         private Guna.UI.WinForms.GunaTextBox nameTextBox;
         private Guna.UI.WinForms.GunaTextBox codeTextBox;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SL;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn addressDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn contactDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn contactPersonDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewImageColumn Action;
+        private System.Windows.Forms.BindingSource supplierBindingSource;
     }
 }

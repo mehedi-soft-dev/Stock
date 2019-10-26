@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Data;
 using System.Data.SqlClient;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using StockManagement.Model;
@@ -64,7 +65,8 @@ namespace StockManagement.Repository
         {
             List<Category> categories = new List<Category>();
 
-            string commandString = @"SELECT * FROM Categories WHERE Name LIKE '%" + searchKeyword + "%'";
+            //string commandString = @"SELECT * FROM Categories WHERE Name LIKE '%" + searchKeyword + "%'";
+            string commandString = @"SELECT * FROM Categories WHERE Name LIKE '%" + searchKeyword + "%' OR Code LIKE '%" + searchKeyword + "%'";
             ConnectionDB connection = new ConnectionDB();
             sqlConnection = connection.CreateConnection();
             
@@ -124,6 +126,46 @@ namespace StockManagement.Repository
             sqlConnection.Close();
 
             return categories;
+        }
+
+        public bool IsCodeExist(string code)
+        {
+            string commandString = @"SELECT * FROM Categories WHERE Code = '" + code + "'";
+            ConnectionDB connection = new ConnectionDB();
+            sqlConnection = connection.CreateConnection();
+
+            SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
+            
+            sqlConnection.Open();
+            SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+            
+
+            if (sqlDataReader.Read())
+                return true;
+            else
+                return false;
+
+            sqlConnection.Close();
+        }
+
+        public bool IsNameExist(string name)
+        {
+            string commandString = @"SELECT * FROM Categories WHERE Name = '" + name + "'";
+            ConnectionDB connection = new ConnectionDB();
+            sqlConnection = connection.CreateConnection();
+
+            SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
+
+            sqlConnection.Open();
+            SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+            
+
+            if (sqlDataReader.Read())
+                return true;
+            else
+                return false;
+            sqlConnection.Close();
+
         }
     }
 }

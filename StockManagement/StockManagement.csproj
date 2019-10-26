@@ -86,6 +86,24 @@
     <Compile Include="Design\PurchaseUserControl.Designer.cs">
       <DependentUpon>PurchaseUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Design\ReportOnPurchaseUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Design\ReportOnPurchaseUserControl.Designer.cs">
+      <DependentUpon>ReportOnPurchaseUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Design\ReportOnSaleUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Design\ReportOnSaleUserControl.Designer.cs">
+      <DependentUpon>ReportOnSaleUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Design\ReportUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Design\ReportUserControl.Designer.cs">
+      <DependentUpon>ReportUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Design\SalesUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -112,6 +130,8 @@
     </Compile>
     <Compile Include="Manager\CategoryManager.cs" />
     <Compile Include="Manager\PurchaseManager.cs" />
+    <Compile Include="Manager\ReportOnPurchaseManager.cs" />
+    <Compile Include="Manager\ReportOnSaleManager.cs" />
     <Compile Include="Manager\SaleManager.cs" />
     <Compile Include="Manager\StockManager.cs" />
     <Compile Include="Manager\SupplierManager.cs" />
@@ -127,6 +147,8 @@
     <Compile Include="Model\Customer.cs" />
     <Compile Include="Model\Product.cs" />
     <Compile Include="Model\Purchase.cs" />
+    <Compile Include="Model\ReportOnPurchase.cs" />
+    <Compile Include="Model\ReportOnSale.cs" />
     <Compile Include="Model\Sale.cs" />
     <Compile Include="Model\Stock.cs" />
     <Compile Include="Model\Supplier.cs" />
@@ -137,6 +159,8 @@
     <Compile Include="Repository\CustomerRepository.cs" />
     <Compile Include="Repository\ProductRepository.cs" />
     <Compile Include="Repository\PurchaseRepository.cs" />
+    <Compile Include="Repository\ReportOnPurchaseRepository.cs" />
+    <Compile Include="Repository\ReportOnSaleRepository.cs" />
     <Compile Include="Repository\SaleRepository.cs" />
     <Compile Include="Repository\StockRepository.cs" />
     <Compile Include="Repository\SupplierRepository.cs" />
@@ -163,6 +187,15 @@
     <EmbeddedResource Include="Design\PurchaseUserControl.resx">
       <DependentUpon>PurchaseUserControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Design\ReportOnPurchaseUserControl.resx">
+      <DependentUpon>ReportOnPurchaseUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\ReportOnSaleUserControl.resx">
+      <DependentUpon>ReportOnSaleUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Design\ReportUserControl.resx">
+      <DependentUpon>ReportUserControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Design\SalesUserControl.resx">
       <DependentUpon>SalesUserControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -188,6 +221,8 @@
     <None Include="Properties\DataSources\StockManagement.Model.Customer.datasource" />
     <None Include="Properties\DataSources\StockManagement.Model.Product.datasource" />
     <None Include="Properties\DataSources\StockManagement.Model.Purchase.datasource" />
+    <None Include="Properties\DataSources\StockManagement.Model.ReportOnPurchase.datasource" />
+    <None Include="Properties\DataSources\StockManagement.Model.ReportOnSale.datasource" />
     <None Include="Properties\DataSources\StockManagement.Model.Sale.datasource" />
     <None Include="Properties\DataSources\StockManagement.Model.Stock.datasource" />
     <None Include="Properties\DataSources\StockManagement.Model.Supplier.datasource" />

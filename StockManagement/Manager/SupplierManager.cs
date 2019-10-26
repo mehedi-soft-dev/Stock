@@ -28,5 +28,20 @@ namespace StockManagement.Manager
             return _supplierRepository.SupplierComboItem();
         }
 
+        public List<Supplier> Search(string searchKeyword)
+        {
+            return _supplierRepository.Search(searchKeyword);
+        }
+
+        public bool IsCodeExist(string code)
+        {
+            return _supplierRepository.IsCodeExist(code);
+        }
+
+        public bool IsNameExist(string name)
+        {
+            return _supplierRepository.IsNameExist(name);
+        }
+
     }
 }

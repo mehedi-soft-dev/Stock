@@ -123,5 +123,14 @@ namespace StockManagement
             StockUserControl stockUserControl = new StockUserControl();
             ShowControl(stockUserControl);
         }
+
+        private void reportsButton_Click(object sender, EventArgs e)
+        {
+            sideBarPanel.Height = reportsButton.Height;
+            sideBarPanel.Top = reportsButton.Top;
+
+            ReportUserControl reportUserControl = new ReportUserControl();
+            ShowControl(reportUserControl);
+        }
     }
 }

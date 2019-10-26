@@ -64,11 +64,13 @@ namespace StockManagement.Repository
             return customers;
         }
 
-        public List<Customer> SearchByName(string searchKeyword)
+        
+
+        public List<Customer> Search(string searchKeyword)
         {
             List<Customer> customers = new List<Customer>();
 
-            string commandString = @"SELECT * FROM Customers WHERE Name LIKE '%" + searchKeyword + "%'";
+            string commandString = @"SELECT * FROM Customers WHERE Name LIKE '%" + searchKeyword + "%' OR Code LIKE '%" + searchKeyword + "%'";
             ConnectionDB connection = new ConnectionDB();
             sqlConnection = connection.CreateConnection();
 
@@ -85,8 +87,12 @@ namespace StockManagement.Repository
                 customer.ID = Convert.ToInt32(sqlDataReader["ID"]);
                 customer.Code = sqlDataReader["Code"].ToString();
                 customer.Name = sqlDataReader["Name"].ToString();
+                customer.Contact = sqlDataReader["Contact"].ToString();
+                customer.Email = sqlDataReader["Email"].ToString();
+                customer.Address = sqlDataReader["Address"].ToString();
+                customer.LoyalityPoint = Convert.ToInt32(sqlDataReader["LoyalityPoint"]);
 
-               customers.Add(customer);
+                customers.Add(customer);
             }
 
             sqlConnection.Close();
@@ -153,6 +159,44 @@ namespace StockManagement.Repository
             sqlConnection.Close();
 
             return customers;
+        }
+
+        public bool IsCodeExist(string code)
+        {
+            string commandString = @"SELECT * FROM Cutomers WHERE Code = '" + code + "'";
+            ConnectionDB connection = new ConnectionDB();
+            sqlConnection = connection.CreateConnection();
+
+            SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
+
+            sqlConnection.Open();
+            SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+            
+
+            if (sqlDataReader.Read())
+                return true;
+            else
+                return false;
+            sqlConnection.Close();
+        }
+
+        public bool IsNameExist(string name)
+        {
+            string commandString = @"SELECT * FROM Categories WHERE Name = '" + name + "'";
+            ConnectionDB connection = new ConnectionDB();
+            sqlConnection = connection.CreateConnection();
+
+            SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
+
+            sqlConnection.Open();
+            SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+            sqlConnection.Close();
+
+            if (sqlDataReader.Read())
+                return true;
+            else
+                return false;
+            sqlConnection.Close();
         }
     }
 }

@@ -23,6 +23,21 @@ namespace StockManagement.Manager
             return _productRepository.Display();
         }
 
+        public bool IsCodeExist(string code)
+        {
+            return _productRepository.IsCodeExist(code);
+        }
+
+        public bool IsNameExist(string name)
+        {
+            return _productRepository.IsNameExist(name);
+        }
+
+        public List<Product> Search(string searchKeyword)
+        {
+            return _productRepository.Search(searchKeyword);
+        }
+
         public List<Category> ComboItem()
         {
             return _categoryRepository.Display();

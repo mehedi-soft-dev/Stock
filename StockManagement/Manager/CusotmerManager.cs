@@ -22,9 +22,19 @@ namespace StockManagement.Manager
             return _cutomerRepository.Display();
         }
 
-        public List<Customer> SearchByName(string searchKeyword)
+        public bool IsCodeExist(string code)
         {
-            return _cutomerRepository.SearchByName(searchKeyword);
+            return _cutomerRepository.IsCodeExist(code);
+        }
+
+        public bool IsNameExist(string name)
+        {
+            return _cutomerRepository.IsNameExist(name);
+        }
+
+        public List<Customer> Search(string searchKeyword)
+        {
+            return _cutomerRepository.Search(searchKeyword);
         }
 
         public Customer SearchById(int id)

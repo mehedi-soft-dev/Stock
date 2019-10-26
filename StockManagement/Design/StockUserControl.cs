@@ -41,5 +41,22 @@ namespace StockManagement.Design
             endDatePicker.CustomFormat = "--/--/----";
         }
 
+        private void dateSearchButton_Click(object sender, EventArgs e)
+        {
+            showDataGridView.DataSource = null;
+            showDataGridView.DataSource = _stockManager.StocksByDate(Convert.ToDateTime(startDatePicker.Text),
+                Convert.ToDateTime(endDatePicker.Text));
+        }
+
+        private void showDataGridView_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            this.showDataGridView.Rows[e.RowIndex].Cells[0].Value = e.RowIndex + 1;
+        }
+
+        private void searchTextBox_TextChanged(object sender, EventArgs e)
+        {
+            showDataGridView.DataSource = null;
+            showDataGridView.DataSource = _stockManager.Search(searchTextBox.Text);
+        }
     }
 }

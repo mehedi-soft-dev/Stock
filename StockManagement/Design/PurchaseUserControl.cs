@@ -62,7 +62,6 @@ namespace StockManagement.Design
                 showDataGridView.DataSource = null;
                 showDataGridView.DataSource = _purchaseList;
 
-                totalItemLabel.Text = _purchaseList.Count().ToString();
 
                 Reset();
             }

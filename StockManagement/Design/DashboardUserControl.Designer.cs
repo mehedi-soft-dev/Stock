@@ -36,11 +36,11 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(181)))));
-            this.label1.Location = new System.Drawing.Point(135, 238);
+            this.label1.Location = new System.Drawing.Point(26, 250);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(620, 65);
+            this.label1.Size = new System.Drawing.Size(821, 65);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Stock Management System";
+            this.label1.Text = "Small Business Management System";
             // 
             // DashboardUserControl
             // 

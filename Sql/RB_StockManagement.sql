@@ -64,11 +64,18 @@ CREATE TABLE Purchases
 	MRP FLOAT
 )
 
-INSERT INTO Purchases (Date, InvoiceNo, SupplierID, ProductID, ManufacturedDate, ExpireDate, Quantity, UnitPrice, MRP) VALUES('2019-10-25',101,2,1,null, null,10,2500,25000);
-
 DROP TABLE Purchases
 
-SELECT * FROM Purchases WHERE Date = '2019-10-22'
+SELECT * FROM Purchases
+
+CREATE VIEW ReportOnPurchase
+AS
+SELECT pr.Code AS "Code", pr.Name AS "Product", c.Name AS "Category", ISNULL(Sum(p.Quantity),0) AS "AvailableQuantity", ISNULL(AVG(p.UnitPrice),0) AS "UnitPrice", ISNULL(AVG(p.MRP),0) AS "MRP", ISNULL(AVG(p.MRP),0) - ISNULL(AVG(p.UnitPrice),0) AS "Profit" FROM Purchases AS p
+LEFT JOIN Products AS pr ON pr.ID = p.ProductID
+LEFT JOIN Categories AS C ON c.ID = pr.CategoryID
+GROUP BY pr.Code, pr.Name, c.Name
+
+SELECT * FROM ReportOnPurchase
 
 DELETE FROM Purchases
 
@@ -113,44 +120,36 @@ CREATE TABLE Sales
 )
 
 SELECT * FROM Sales
-DELETE FROM Sales
+
+CREATE VIEW ReportOnSale
+AS
+SELECT pr.Code AS "Code", pr.Name AS "Product", c.Name AS "Category", ISNULL(SUM(s.Quantity),0) AS "SoldQuantity", ISNULL(AVG(p.UnitPrice),0) AS "CP" , ISNULL(AVG(s.Price),0) AS "MRP", ISNULL(AVG(s.Price),0)-ISNULL(AVG(p.UnitPrice),0) AS Profit  FROM Sales AS s
+LEFT JOIN Purchases AS p ON p.ProductID = s.ProductID
+LEFT JOIN Products AS pr ON pr.ID = s.ProductID
+LEFT JOIN Categories AS C ON c.ID = pr.CategoryID
+GROUP BY pr.Code, pr.Name, c.Name
 
 DROP TABLE Sales
 
-CREATE VIEW Stock
+CREATE VIEW PV
 AS
-SELECT pr.ID AS ID, pr.Code AS Code, pr.Name AS Product, ISNUll(SUM(p.Quantity),0) AS "IN", ISNUll(SUM(s.Quantity),0) AS "OUT" FROM Products AS pr
-LEFT JOIN Purchases As p ON  pr.ID = p.ProductID
-LEFT JOIN Sales AS s ON pr.ID = s.ProductID 
-GROUP BY pr.ID, pr.Code, pr.Name
+SELECT pr.ID AS "ID", pr.Code AS "Code", pr.Name AS "Product", p.Date AS PDate, ISNUll(SUM(p.Quantity),0) AS "StockIn" FROM Purchases AS p
+LEFT JOIN Products AS pr ON p.ProductID = pr.ID
+GROUP BY pr.ID, pr.Code, pr.Name, p.Date
 
-SELECT * FROM Stock WHERE ID BETWEEN 1 AND 3
+SELECT * FROM PV
 
-CREATE VIEW ST
+CREATE VIEW SV
 AS
-SELECT pr.ID AS ID, pr.Code AS Code, pr.Name AS Name, p.Date AS PDate, s.Date AS SDate, ISNUll(SUM(p.Quantity),0) AS "StockIn", ISNUll(SUM(s.Quantity),0) AS "StockOut", ISNULL(Sum(p.Quantity),0)-ISNULL(SUM(s.Quantity),0) AS "ClosingBalance" FROM Products AS pr
-LEFT JOIN Purchases As p ON  pr.ID = p.ProductID
-LEFT JOIN Sales AS s ON pr.ID = s.ProductID
---WHERE (p.Date  PDate BETWEEN '2019-10-17' AND '2019-10-30') OR (s.Date AS SDate BETWEEN '2019-10-17' AND '2019-10-30')
-GROUP BY pr.ID, pr.Code, pr.Name, s.Date, p.Date
+SELECT s.ProductID AS "ID", s.Date AS SDate, ISNUll(SUM(s.Quantity),0) AS "StockOut" FROM Sales AS s
+LEFT JOIN Products AS pr ON s.ProductID = pr.ID
+GROUP BY s.ProductID, s.Date
 
-Drop VIEW ST
+SELECT * FROM PV
+SELECT * FROM SV
 
-SELECT ID, Code,Sum(StockIn) AS "IN", Sum(StockOut) AS "OUT", Sum(ClosingBalance) AS "Closing Balance" FROM ST
-WHERE (PDate BETWEEN '2019-10-27' AND '2019-10-28') --AND (SDate BETWEEN '2019-10-17' AND '2019-10-17')
-GROUP BY ID, Code
-
-
-SELECT ID, ISNULL(Sum(Quantity),0) FROM Purchases
-WHERE Date > '2019-10-27' --AND '2019-10-30'
-GROUP BY ID
-
-
-DROP VIEW Stock
-
-
-SELECT pr.ID AS ID, pr.Code AS Code, ISNUll(SUM(p.Quantity),0) AS "Total IN", ISNULL(SUM(s.Quantity),0) As "Total Out" From Products AS pr
-LEFT JOIN Sales AS s ON  ID = s.ProductID
-LEFT JOIN Purchases AS p ON ID =  p.ProductID
-GROUP BY Code
-
+CREATE VIEW Stocks
+AS
+SELECT pv.Code AS "Code", pv.Product AS "Product", ISNULL(SUM(0),0) AS "OpeningBalance", ISNULL(SUM(pv.StockIn),0) AS "StockIn", ISNULL(SUM(sv.StockOut),0) AS "StockOut", ISNULL(SUM(pv.StockIn),0) - ISNULL(SUM(sv.StockOut),0) AS "ClosingBalance" FROM PV AS pv
+LEFT JOIN SV as sv ON sv.ID = pv.ID
+GROUP BY pv.Code, pv.Product

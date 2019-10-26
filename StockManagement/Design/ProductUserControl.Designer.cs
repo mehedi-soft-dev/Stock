@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductUserControl));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductUserControl));
             this.gunaPanel2 = new Guna.UI.WinForms.GunaPanel();
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -53,14 +53,10 @@
             this.reorderLevelTextBox = new Guna.UI.WinForms.GunaTextBox();
             this.nameTextBox = new Guna.UI.WinForms.GunaTextBox();
             this.codeTextBox = new Guna.UI.WinForms.GunaTextBox();
-            this.refreshButton = new Guna.UI.WinForms.GunaButton();
             this.gunaPanel1 = new Guna.UI.WinForms.GunaPanel();
             this.gunaLabel3 = new Guna.UI.WinForms.GunaLabel();
             this.searchTextBox = new Guna.UI.WinForms.GunaTextBox();
             this.showDataGridView = new Guna.UI.WinForms.GunaDataGridView();
-            this.gunaPanel4 = new Guna.UI.WinForms.GunaPanel();
-            this.gunaLabel5 = new Guna.UI.WinForms.GunaLabel();
-            this.productBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.SL = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.codeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -68,13 +64,16 @@
             this.reOrderLevelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Action = new System.Windows.Forms.DataGridViewImageColumn();
+            this.productBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.gunaPanel4 = new Guna.UI.WinForms.GunaPanel();
+            this.gunaLabel5 = new Guna.UI.WinForms.GunaLabel();
             this.gunaPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource)).BeginInit();
             this.gunaPanel3.SuspendLayout();
             this.gunaPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.showDataGridView)).BeginInit();
-            this.gunaPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).BeginInit();
+            this.gunaPanel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // gunaPanel2
@@ -134,6 +133,7 @@
             this.categoryComboBox.Size = new System.Drawing.Size(178, 23);
             this.categoryComboBox.TabIndex = 17;
             this.categoryComboBox.ValueMember = "ID";
+            this.categoryComboBox.TextChanged += new System.EventHandler(this.categoryComboBox_TextChanged);
             // 
             // categoryBindingSource
             // 
@@ -299,6 +299,7 @@
             this.reorderLevelTextBox.PasswordChar = '\0';
             this.reorderLevelTextBox.Size = new System.Drawing.Size(178, 26);
             this.reorderLevelTextBox.TabIndex = 3;
+            this.reorderLevelTextBox.TextChanged += new System.EventHandler(this.reorderLevelTextBox_TextChanged);
             // 
             // nameTextBox
             // 
@@ -319,6 +320,7 @@
             this.nameTextBox.PasswordChar = '\0';
             this.nameTextBox.Size = new System.Drawing.Size(178, 26);
             this.nameTextBox.TabIndex = 2;
+            this.nameTextBox.TextChanged += new System.EventHandler(this.nameTextBox_TextChanged);
             // 
             // codeTextBox
             // 
@@ -339,28 +341,7 @@
             this.codeTextBox.PasswordChar = '\0';
             this.codeTextBox.Size = new System.Drawing.Size(178, 26);
             this.codeTextBox.TabIndex = 1;
-            // 
-            // refreshButton
-            // 
-            this.refreshButton.AnimationHoverSpeed = 0.07F;
-            this.refreshButton.AnimationSpeed = 0.03F;
-            this.refreshButton.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(181)))));
-            this.refreshButton.BorderColor = System.Drawing.Color.Black;
-            this.refreshButton.FocusedColor = System.Drawing.Color.Empty;
-            this.refreshButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.refreshButton.ForeColor = System.Drawing.Color.White;
-            this.refreshButton.Image = ((System.Drawing.Image)(resources.GetObject("refreshButton.Image")));
-            this.refreshButton.ImageSize = new System.Drawing.Size(20, 20);
-            this.refreshButton.Location = new System.Drawing.Point(731, 51);
-            this.refreshButton.Name = "refreshButton";
-            this.refreshButton.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(181)))));
-            this.refreshButton.OnHoverBorderColor = System.Drawing.Color.Black;
-            this.refreshButton.OnHoverForeColor = System.Drawing.Color.White;
-            this.refreshButton.OnHoverImage = null;
-            this.refreshButton.OnPressedColor = System.Drawing.Color.Black;
-            this.refreshButton.Size = new System.Drawing.Size(125, 28);
-            this.refreshButton.TabIndex = 7;
-            this.refreshButton.Text = "Refresh";
+            this.codeTextBox.TextChanged += new System.EventHandler(this.codeTextBox_TextChanged);
             // 
             // gunaPanel1
             // 
@@ -403,6 +384,7 @@
             this.searchTextBox.Radius = 12;
             this.searchTextBox.Size = new System.Drawing.Size(157, 26);
             this.searchTextBox.TabIndex = 3;
+            this.searchTextBox.TextChanged += new System.EventHandler(this.searchTextBox_TextChanged);
             // 
             // showDataGridView
             // 
@@ -490,31 +472,7 @@
             this.showDataGridView.ThemeStyle.RowsStyle.Height = 25;
             this.showDataGridView.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(186)))), ((int)(((byte)(231)))));
             this.showDataGridView.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
-            // 
-            // gunaPanel4
-            // 
-            this.gunaPanel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(181)))));
-            this.gunaPanel4.Controls.Add(this.gunaLabel5);
-            this.gunaPanel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gunaPanel4.Location = new System.Drawing.Point(0, 0);
-            this.gunaPanel4.Name = "gunaPanel4";
-            this.gunaPanel4.Size = new System.Drawing.Size(496, 30);
-            this.gunaPanel4.TabIndex = 3;
-            // 
-            // gunaLabel5
-            // 
-            this.gunaLabel5.AutoSize = true;
-            this.gunaLabel5.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gunaLabel5.ForeColor = System.Drawing.Color.White;
-            this.gunaLabel5.Location = new System.Drawing.Point(182, 5);
-            this.gunaLabel5.Name = "gunaLabel5";
-            this.gunaLabel5.Size = new System.Drawing.Size(130, 20);
-            this.gunaLabel5.TabIndex = 0;
-            this.gunaLabel5.Text = "Available Product";
-            // 
-            // productBindingSource
-            // 
-            this.productBindingSource.DataSource = typeof(StockManagement.Model.Product);
+            this.showDataGridView.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.showDataGridView_RowPostPaint);
             // 
             // SL
             // 
@@ -566,13 +524,37 @@
             this.Action.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Action.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
+            // productBindingSource
+            // 
+            this.productBindingSource.DataSource = typeof(StockManagement.Model.Product);
+            // 
+            // gunaPanel4
+            // 
+            this.gunaPanel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(181)))));
+            this.gunaPanel4.Controls.Add(this.gunaLabel5);
+            this.gunaPanel4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gunaPanel4.Location = new System.Drawing.Point(0, 0);
+            this.gunaPanel4.Name = "gunaPanel4";
+            this.gunaPanel4.Size = new System.Drawing.Size(496, 30);
+            this.gunaPanel4.TabIndex = 3;
+            // 
+            // gunaLabel5
+            // 
+            this.gunaLabel5.AutoSize = true;
+            this.gunaLabel5.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gunaLabel5.ForeColor = System.Drawing.Color.White;
+            this.gunaLabel5.Location = new System.Drawing.Point(182, 5);
+            this.gunaLabel5.Name = "gunaLabel5";
+            this.gunaLabel5.Size = new System.Drawing.Size(130, 20);
+            this.gunaLabel5.TabIndex = 0;
+            this.gunaLabel5.Text = "Available Product";
+            // 
             // ProductUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.gunaPanel1);
-            this.Controls.Add(this.refreshButton);
             this.Controls.Add(this.gunaPanel2);
             this.Name = "ProductUserControl";
             this.Size = new System.Drawing.Size(881, 570);
@@ -584,9 +566,9 @@
             this.gunaPanel1.ResumeLayout(false);
             this.gunaPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.showDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).EndInit();
             this.gunaPanel4.ResumeLayout(false);
             this.gunaPanel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -609,7 +591,6 @@
         private System.Windows.Forms.Label categoryErrorLabel;
         private System.Windows.Forms.Label nameLabel;
         private System.Windows.Forms.Label reorderLevelLabel;
-        private Guna.UI.WinForms.GunaButton refreshButton;
         private Guna.UI.WinForms.GunaPanel gunaPanel1;
         private Guna.UI.WinForms.GunaLabel gunaLabel3;
         private Guna.UI.WinForms.GunaTextBox searchTextBox;

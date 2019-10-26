@@ -93,8 +93,6 @@
             this.mRPDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Action = new System.Windows.Forms.DataGridViewImageColumn();
             this.purchaseBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.totalItemLabel = new Guna.UI.WinForms.GunaLabel();
-            this.gunaLabel1 = new Guna.UI.WinForms.GunaLabel();
             this.supplierBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -707,8 +705,6 @@
             this.panel1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel1.Controls.Add(this.showDataGridView);
-            this.panel1.Controls.Add(this.totalItemLabel);
-            this.panel1.Controls.Add(this.gunaLabel1);
             this.panel1.Controls.Add(this.submitButton);
             this.panel1.Location = new System.Drawing.Point(23, 403);
             this.panel1.Name = "panel1";
@@ -873,26 +869,6 @@
             // 
             this.purchaseBindingSource.DataSource = typeof(StockManagement.Model.Purchase);
             // 
-            // totalItemLabel
-            // 
-            this.totalItemLabel.AutoSize = true;
-            this.totalItemLabel.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.totalItemLabel.Location = new System.Drawing.Point(426, 133);
-            this.totalItemLabel.Name = "totalItemLabel";
-            this.totalItemLabel.Size = new System.Drawing.Size(13, 15);
-            this.totalItemLabel.TabIndex = 6;
-            this.totalItemLabel.Text = "0";
-            // 
-            // gunaLabel1
-            // 
-            this.gunaLabel1.AutoSize = true;
-            this.gunaLabel1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.gunaLabel1.Location = new System.Drawing.Point(361, 132);
-            this.gunaLabel1.Name = "gunaLabel1";
-            this.gunaLabel1.Size = new System.Drawing.Size(65, 15);
-            this.gunaLabel1.TabIndex = 6;
-            this.gunaLabel1.Text = "Total Item :";
-            // 
             // supplierBindingSource
             // 
             this.supplierBindingSource.DataSource = typeof(StockManagement.Model.Supplier);
@@ -914,7 +890,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource)).EndInit();
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.showDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.purchaseBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.supplierBindingSource)).EndInit();
@@ -964,8 +939,6 @@
         private Guna.UI.WinForms.GunaTextBox remarkTextBox;
         private System.Windows.Forms.Label categoryErrorLabel;
         private System.Windows.Forms.Label unitPriceErrorLabel;
-        private Guna.UI.WinForms.GunaLabel totalItemLabel;
-        private Guna.UI.WinForms.GunaLabel gunaLabel1;
         private Guna.UI.WinForms.GunaButton addButton;
         private System.Windows.Forms.BindingSource supplierBindingSource;
         private System.Windows.Forms.ComboBox supplierComboBox;

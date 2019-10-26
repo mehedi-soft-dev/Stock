@@ -36,20 +36,19 @@
             this.showDataGridView = new Guna.UI.WinForms.GunaDataGridView();
             this.startDatePicker = new System.Windows.Forms.DateTimePicker();
             this.endDatePicker = new System.Windows.Forms.DateTimePicker();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.categoryTextBox = new Guna.UI.WinForms.GunaTextBox();
-            this.productTextBox = new Guna.UI.WinForms.GunaTextBox();
+            this.searchTextBox = new Guna.UI.WinForms.GunaTextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.stockBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dateSearchButton = new Guna.UI.WinForms.GunaButton();
             this.SL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
             this.codeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.openingBalanceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.inDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.outDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.closingBalanaceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stockBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.showDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.stockBindingSource)).BeginInit();
@@ -88,7 +87,7 @@
             this.showDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.SL,
             this.codeDataGridViewTextBoxColumn,
-            this.nameDataGridViewTextBoxColumn,
+            this.productDataGridViewTextBoxColumn,
             this.openingBalanceDataGridViewTextBoxColumn,
             this.inDataGridViewTextBoxColumn,
             this.outDataGridViewTextBoxColumn,
@@ -109,7 +108,7 @@
             this.showDataGridView.ReadOnly = true;
             this.showDataGridView.RowHeadersVisible = false;
             this.showDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.showDataGridView.Size = new System.Drawing.Size(840, 372);
+            this.showDataGridView.Size = new System.Drawing.Size(840, 337);
             this.showDataGridView.TabIndex = 0;
             this.showDataGridView.Theme = Guna.UI.WinForms.GunaDataGridViewPresetThemes.FeterRiver;
             this.showDataGridView.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(224)))), ((int)(((byte)(244)))));
@@ -133,13 +132,14 @@
             this.showDataGridView.ThemeStyle.RowsStyle.Height = 22;
             this.showDataGridView.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(186)))), ((int)(((byte)(231)))));
             this.showDataGridView.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
+            this.showDataGridView.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.showDataGridView_RowPostPaint);
             // 
             // startDatePicker
             // 
             this.startDatePicker.CustomFormat = "--/--/----";
             this.startDatePicker.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.startDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.startDatePicker.Location = new System.Drawing.Point(486, 89);
+            this.startDatePicker.Location = new System.Drawing.Point(177, 114);
             this.startDatePicker.Name = "startDatePicker";
             this.startDatePicker.Size = new System.Drawing.Size(175, 25);
             this.startDatePicker.TabIndex = 5;
@@ -152,7 +152,7 @@
             this.endDatePicker.CustomFormat = "--/--/----";
             this.endDatePicker.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.endDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.endDatePicker.Location = new System.Drawing.Point(486, 127);
+            this.endDatePicker.Location = new System.Drawing.Point(431, 114);
             this.endDatePicker.Name = "endDatePicker";
             this.endDatePicker.Size = new System.Drawing.Size(175, 25);
             this.endDatePicker.TabIndex = 5;
@@ -160,60 +160,27 @@
             this.endDatePicker.ValueChanged += new System.EventHandler(this.endDatePicker_ValueChanged);
             this.endDatePicker.KeyDown += new System.Windows.Forms.KeyEventHandler(this.endDatePicker_KeyDown);
             // 
-            // label1
+            // searchTextBox
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(159, 95);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(49, 13);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Category";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(164, 133);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(44, 13);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Product";
-            // 
-            // categoryTextBox
-            // 
-            this.categoryTextBox.BaseColor = System.Drawing.Color.White;
-            this.categoryTextBox.BorderColor = System.Drawing.Color.Silver;
-            this.categoryTextBox.BorderSize = 1;
-            this.categoryTextBox.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.categoryTextBox.FocusedBaseColor = System.Drawing.Color.White;
-            this.categoryTextBox.FocusedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(181)))));
-            this.categoryTextBox.FocusedForeColor = System.Drawing.SystemColors.ControlText;
-            this.categoryTextBox.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.categoryTextBox.Location = new System.Drawing.Point(215, 89);
-            this.categoryTextBox.Name = "categoryTextBox";
-            this.categoryTextBox.PasswordChar = '\0';
-            this.categoryTextBox.Size = new System.Drawing.Size(175, 26);
-            this.categoryTextBox.TabIndex = 8;
-            // 
-            // productTextBox
-            // 
-            this.productTextBox.BaseColor = System.Drawing.Color.White;
-            this.productTextBox.BorderColor = System.Drawing.Color.Silver;
-            this.productTextBox.BorderSize = 1;
-            this.productTextBox.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.productTextBox.FocusedBaseColor = System.Drawing.Color.White;
-            this.productTextBox.FocusedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(181)))));
-            this.productTextBox.FocusedForeColor = System.Drawing.SystemColors.ControlText;
-            this.productTextBox.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.productTextBox.Location = new System.Drawing.Point(215, 126);
-            this.productTextBox.Name = "productTextBox";
-            this.productTextBox.PasswordChar = '\0';
-            this.productTextBox.Size = new System.Drawing.Size(175, 26);
-            this.productTextBox.TabIndex = 8;
+            this.searchTextBox.BaseColor = System.Drawing.Color.White;
+            this.searchTextBox.BorderColor = System.Drawing.Color.Silver;
+            this.searchTextBox.BorderSize = 1;
+            this.searchTextBox.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.searchTextBox.FocusedBaseColor = System.Drawing.Color.White;
+            this.searchTextBox.FocusedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(181)))));
+            this.searchTextBox.FocusedForeColor = System.Drawing.SystemColors.ControlText;
+            this.searchTextBox.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.searchTextBox.Location = new System.Drawing.Point(177, 145);
+            this.searchTextBox.Name = "searchTextBox";
+            this.searchTextBox.PasswordChar = '\0';
+            this.searchTextBox.Size = new System.Drawing.Size(518, 26);
+            this.searchTextBox.TabIndex = 8;
+            this.searchTextBox.TextChanged += new System.EventHandler(this.searchTextBox_TextChanged);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(424, 95);
+            this.label3.Location = new System.Drawing.Point(119, 120);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(55, 13);
             this.label3.TabIndex = 6;
@@ -222,15 +189,35 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(427, 134);
+            this.label4.Location = new System.Drawing.Point(376, 120);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(52, 13);
             this.label4.TabIndex = 7;
             this.label4.Text = "End Date";
             // 
-            // stockBindingSource
+            // dateSearchButton
             // 
-            this.stockBindingSource.DataSource = typeof(StockManagement.Model.Stock);
+            this.dateSearchButton.AnimationHoverSpeed = 0.07F;
+            this.dateSearchButton.AnimationSpeed = 0.03F;
+            this.dateSearchButton.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(181)))));
+            this.dateSearchButton.BorderColor = System.Drawing.Color.Black;
+            this.dateSearchButton.FocusedColor = System.Drawing.Color.Empty;
+            this.dateSearchButton.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.dateSearchButton.ForeColor = System.Drawing.Color.White;
+            this.dateSearchButton.Image = null;
+            this.dateSearchButton.ImageSize = new System.Drawing.Size(20, 20);
+            this.dateSearchButton.Location = new System.Drawing.Point(612, 115);
+            this.dateSearchButton.Name = "dateSearchButton";
+            this.dateSearchButton.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
+            this.dateSearchButton.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.dateSearchButton.OnHoverForeColor = System.Drawing.Color.White;
+            this.dateSearchButton.OnHoverImage = null;
+            this.dateSearchButton.OnPressedColor = System.Drawing.Color.Black;
+            this.dateSearchButton.Size = new System.Drawing.Size(83, 24);
+            this.dateSearchButton.TabIndex = 9;
+            this.dateSearchButton.Text = "Search";
+            this.dateSearchButton.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.dateSearchButton.Click += new System.EventHandler(this.dateSearchButton_Click);
             // 
             // SL
             // 
@@ -239,26 +226,33 @@
             this.SL.Name = "SL";
             this.SL.ReadOnly = true;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.label1.Location = new System.Drawing.Point(133, 152);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(41, 13);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Search";
+            // 
             // codeDataGridViewTextBoxColumn
             // 
             this.codeDataGridViewTextBoxColumn.DataPropertyName = "Code";
-            this.codeDataGridViewTextBoxColumn.FillWeight = 96.8818F;
             this.codeDataGridViewTextBoxColumn.HeaderText = "Code";
             this.codeDataGridViewTextBoxColumn.Name = "codeDataGridViewTextBoxColumn";
             this.codeDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // nameDataGridViewTextBoxColumn
+            // productDataGridViewTextBoxColumn
             // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn.FillWeight = 96.8818F;
-            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.productDataGridViewTextBoxColumn.DataPropertyName = "Product";
+            this.productDataGridViewTextBoxColumn.HeaderText = "Product";
+            this.productDataGridViewTextBoxColumn.Name = "productDataGridViewTextBoxColumn";
+            this.productDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // openingBalanceDataGridViewTextBoxColumn
             // 
             this.openingBalanceDataGridViewTextBoxColumn.DataPropertyName = "OpeningBalance";
-            this.openingBalanceDataGridViewTextBoxColumn.FillWeight = 96.8818F;
             this.openingBalanceDataGridViewTextBoxColumn.HeaderText = "Opening Balance";
             this.openingBalanceDataGridViewTextBoxColumn.Name = "openingBalanceDataGridViewTextBoxColumn";
             this.openingBalanceDataGridViewTextBoxColumn.ReadOnly = true;
@@ -266,7 +260,6 @@
             // inDataGridViewTextBoxColumn
             // 
             this.inDataGridViewTextBoxColumn.DataPropertyName = "In";
-            this.inDataGridViewTextBoxColumn.FillWeight = 96.8818F;
             this.inDataGridViewTextBoxColumn.HeaderText = "In";
             this.inDataGridViewTextBoxColumn.Name = "inDataGridViewTextBoxColumn";
             this.inDataGridViewTextBoxColumn.ReadOnly = true;
@@ -274,7 +267,6 @@
             // outDataGridViewTextBoxColumn
             // 
             this.outDataGridViewTextBoxColumn.DataPropertyName = "Out";
-            this.outDataGridViewTextBoxColumn.FillWeight = 96.8818F;
             this.outDataGridViewTextBoxColumn.HeaderText = "Out";
             this.outDataGridViewTextBoxColumn.Name = "outDataGridViewTextBoxColumn";
             this.outDataGridViewTextBoxColumn.ReadOnly = true;
@@ -282,22 +274,24 @@
             // closingBalanaceDataGridViewTextBoxColumn
             // 
             this.closingBalanaceDataGridViewTextBoxColumn.DataPropertyName = "ClosingBalanace";
-            this.closingBalanaceDataGridViewTextBoxColumn.FillWeight = 96.8818F;
             this.closingBalanaceDataGridViewTextBoxColumn.HeaderText = "Closing Balanace";
             this.closingBalanaceDataGridViewTextBoxColumn.Name = "closingBalanaceDataGridViewTextBoxColumn";
             this.closingBalanaceDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // stockBindingSource
+            // 
+            this.stockBindingSource.DataSource = typeof(StockManagement.Model.Stock);
             // 
             // StockUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.productTextBox);
-            this.Controls.Add(this.categoryTextBox);
+            this.Controls.Add(this.dateSearchButton);
+            this.Controls.Add(this.searchTextBox);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.endDatePicker);
             this.Controls.Add(this.startDatePicker);
             this.Controls.Add(this.panel1);
@@ -317,19 +311,19 @@
         private Guna.UI.WinForms.GunaDataGridView showDataGridView;
         private System.Windows.Forms.DateTimePicker startDatePicker;
         private System.Windows.Forms.DateTimePicker endDatePicker;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private Guna.UI.WinForms.GunaTextBox categoryTextBox;
-        private Guna.UI.WinForms.GunaTextBox productTextBox;
+        private Guna.UI.WinForms.GunaTextBox searchTextBox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.BindingSource stockBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private Guna.UI.WinForms.GunaButton dateSearchButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn SL;
         private System.Windows.Forms.DataGridViewTextBoxColumn codeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn productDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn openingBalanceDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn inDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn outDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn closingBalanaceDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource stockBindingSource;
+        private System.Windows.Forms.Label label1;
     }
 }

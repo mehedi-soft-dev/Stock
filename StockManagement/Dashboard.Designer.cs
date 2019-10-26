@@ -95,6 +95,7 @@
             this.reportsButton.Text = "        Reports";
             this.reportsButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.reportsButton.UseVisualStyleBackColor = true;
+            this.reportsButton.Click += new System.EventHandler(this.reportsButton_Click);
             // 
             // stockOutButton
             // 

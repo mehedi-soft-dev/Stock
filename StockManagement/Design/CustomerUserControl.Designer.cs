@@ -28,10 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CustomerUserControl));
             this.gunaPanel2 = new Guna.UI.WinForms.GunaPanel();
             this.label2 = new System.Windows.Forms.Label();
@@ -59,16 +60,23 @@
             this.gunaLabel3 = new Guna.UI.WinForms.GunaLabel();
             this.searchTextBox = new Guna.UI.WinForms.GunaTextBox();
             this.showDataGridView = new Guna.UI.WinForms.GunaDataGridView();
-            this.SL = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Action = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gunaPanel4 = new Guna.UI.WinForms.GunaPanel();
             this.gunaLabel5 = new Guna.UI.WinForms.GunaLabel();
-            this.refreshButton = new Guna.UI.WinForms.GunaButton();
+            this.SL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Action = new System.Windows.Forms.DataGridViewImageColumn();
+            this.codeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.addressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contactDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.loyalityPointDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.customerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gunaPanel2.SuspendLayout();
             this.gunaPanel3.SuspendLayout();
             this.gunaPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.showDataGridView)).BeginInit();
             this.gunaPanel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // gunaPanel2
@@ -106,7 +114,7 @@
             this.label2.ForeColor = System.Drawing.Color.DimGray;
             this.label2.Location = new System.Drawing.Point(54, 55);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(36, 16);
+            this.label2.Size = new System.Drawing.Size(35, 14);
             this.label2.TabIndex = 4;
             this.label2.Text = "Code";
             // 
@@ -117,9 +125,8 @@
             this.contactErrorLabel.ForeColor = System.Drawing.Color.Red;
             this.contactErrorLabel.Location = new System.Drawing.Point(90, 246);
             this.contactErrorLabel.Name = "contactErrorLabel";
-            this.contactErrorLabel.Size = new System.Drawing.Size(33, 15);
+            this.contactErrorLabel.Size = new System.Drawing.Size(0, 13);
             this.contactErrorLabel.TabIndex = 10;
-            this.contactErrorLabel.Text = "Hello";
             // 
             // emailErrorLabel
             // 
@@ -128,9 +135,8 @@
             this.emailErrorLabel.ForeColor = System.Drawing.Color.Red;
             this.emailErrorLabel.Location = new System.Drawing.Point(90, 202);
             this.emailErrorLabel.Name = "emailErrorLabel";
-            this.emailErrorLabel.Size = new System.Drawing.Size(33, 15);
+            this.emailErrorLabel.Size = new System.Drawing.Size(0, 13);
             this.emailErrorLabel.TabIndex = 10;
-            this.emailErrorLabel.Text = "Hello";
             // 
             // addressErrorLabel
             // 
@@ -139,9 +145,8 @@
             this.addressErrorLabel.ForeColor = System.Drawing.Color.Red;
             this.addressErrorLabel.Location = new System.Drawing.Point(90, 160);
             this.addressErrorLabel.Name = "addressErrorLabel";
-            this.addressErrorLabel.Size = new System.Drawing.Size(33, 15);
+            this.addressErrorLabel.Size = new System.Drawing.Size(0, 13);
             this.addressErrorLabel.TabIndex = 10;
-            this.addressErrorLabel.Text = "Hello";
             // 
             // nameErrorLabel
             // 
@@ -150,9 +155,8 @@
             this.nameErrorLabel.ForeColor = System.Drawing.Color.Red;
             this.nameErrorLabel.Location = new System.Drawing.Point(90, 117);
             this.nameErrorLabel.Name = "nameErrorLabel";
-            this.nameErrorLabel.Size = new System.Drawing.Size(33, 15);
+            this.nameErrorLabel.Size = new System.Drawing.Size(0, 13);
             this.nameErrorLabel.TabIndex = 9;
-            this.nameErrorLabel.Text = "Hello";
             // 
             // codeErrorLabel
             // 
@@ -161,9 +165,8 @@
             this.codeErrorLabel.ForeColor = System.Drawing.Color.Red;
             this.codeErrorLabel.Location = new System.Drawing.Point(90, 75);
             this.codeErrorLabel.Name = "codeErrorLabel";
-            this.codeErrorLabel.Size = new System.Drawing.Size(33, 15);
+            this.codeErrorLabel.Size = new System.Drawing.Size(0, 13);
             this.codeErrorLabel.TabIndex = 7;
-            this.codeErrorLabel.Text = "Hello";
             // 
             // categoryErrorLabel
             // 
@@ -172,7 +175,7 @@
             this.categoryErrorLabel.ForeColor = System.Drawing.Color.Red;
             this.categoryErrorLabel.Location = new System.Drawing.Point(90, 33);
             this.categoryErrorLabel.Name = "categoryErrorLabel";
-            this.categoryErrorLabel.Size = new System.Drawing.Size(0, 15);
+            this.categoryErrorLabel.Size = new System.Drawing.Size(0, 13);
             this.categoryErrorLabel.TabIndex = 8;
             // 
             // label8
@@ -182,7 +185,7 @@
             this.label8.ForeColor = System.Drawing.Color.DimGray;
             this.label8.Location = new System.Drawing.Point(9, 268);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(82, 16);
+            this.label8.Size = new System.Drawing.Size(81, 14);
             this.label8.TabIndex = 4;
             this.label8.Text = "Loyality Point";
             // 
@@ -193,7 +196,7 @@
             this.label6.ForeColor = System.Drawing.Color.DimGray;
             this.label6.Location = new System.Drawing.Point(38, 225);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(51, 16);
+            this.label6.Size = new System.Drawing.Size(50, 14);
             this.label6.TabIndex = 4;
             this.label6.Text = "Contact";
             // 
@@ -204,7 +207,7 @@
             this.label4.ForeColor = System.Drawing.Color.DimGray;
             this.label4.Location = new System.Drawing.Point(49, 182);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(42, 16);
+            this.label4.Size = new System.Drawing.Size(40, 14);
             this.label4.TabIndex = 4;
             this.label4.Text = "E-Mail";
             // 
@@ -215,7 +218,7 @@
             this.label3.ForeColor = System.Drawing.Color.DimGray;
             this.label3.Location = new System.Drawing.Point(38, 139);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(52, 16);
+            this.label3.Size = new System.Drawing.Size(51, 14);
             this.label3.TabIndex = 4;
             this.label3.Text = "Address";
             // 
@@ -226,7 +229,7 @@
             this.label1.ForeColor = System.Drawing.Color.DimGray;
             this.label1.Location = new System.Drawing.Point(49, 97);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(40, 16);
+            this.label1.Size = new System.Drawing.Size(40, 14);
             this.label1.TabIndex = 4;
             this.label1.Text = "Name";
             // 
@@ -317,6 +320,7 @@
             this.contactTextBox.PasswordChar = '\0';
             this.contactTextBox.Size = new System.Drawing.Size(178, 26);
             this.contactTextBox.TabIndex = 4;
+            this.contactTextBox.TextChanged += new System.EventHandler(this.contactTextBox_TextChanged);
             // 
             // emailTextBox
             // 
@@ -337,6 +341,7 @@
             this.emailTextBox.PasswordChar = '\0';
             this.emailTextBox.Size = new System.Drawing.Size(178, 26);
             this.emailTextBox.TabIndex = 3;
+            this.emailTextBox.TextChanged += new System.EventHandler(this.emailTextBox_TextChanged);
             // 
             // addressTextBox
             // 
@@ -377,6 +382,7 @@
             this.nameTextBox.PasswordChar = '\0';
             this.nameTextBox.Size = new System.Drawing.Size(178, 26);
             this.nameTextBox.TabIndex = 1;
+            this.nameTextBox.TextChanged += new System.EventHandler(this.nameTextBox_TextChanged);
             // 
             // codeTextBox
             // 
@@ -397,6 +403,7 @@
             this.codeTextBox.PasswordChar = '\0';
             this.codeTextBox.Size = new System.Drawing.Size(178, 26);
             this.codeTextBox.TabIndex = 0;
+            this.codeTextBox.TextChanged += new System.EventHandler(this.codeTextBox_TextChanged);
             // 
             // gunaPanel1
             // 
@@ -446,34 +453,42 @@
             this.showDataGridView.AllowUserToAddRows = false;
             this.showDataGridView.AllowUserToDeleteRows = false;
             this.showDataGridView.AllowUserToResizeRows = false;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(224)))), ((int)(((byte)(244)))));
-            this.showDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(224)))), ((int)(((byte)(244)))));
+            this.showDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.showDataGridView.AutoGenerateColumns = false;
             this.showDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.showDataGridView.BackgroundColor = System.Drawing.Color.White;
             this.showDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.showDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.showDataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.showDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.showDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.showDataGridView.ColumnHeadersHeight = 25;
             this.showDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.showDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.SL,
+            this.codeDataGridViewTextBoxColumn,
+            this.nameDataGridViewTextBoxColumn,
+            this.addressDataGridViewTextBoxColumn,
+            this.contactDataGridViewTextBoxColumn,
+            this.emailDataGridViewTextBoxColumn,
+            this.loyalityPointDataGridViewTextBoxColumn,
             this.Action});
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(234)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(186)))), ((int)(((byte)(231)))));
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.showDataGridView.DefaultCellStyle = dataGridViewCellStyle7;
+            this.showDataGridView.DataSource = this.customerBindingSource;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(234)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(186)))), ((int)(((byte)(231)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.showDataGridView.DefaultCellStyle = dataGridViewCellStyle3;
             this.showDataGridView.EnableHeadersVisualStyles = false;
             this.showDataGridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(220)))), ((int)(((byte)(242)))));
             this.showDataGridView.ImeMode = System.Windows.Forms.ImeMode.Off;
@@ -482,14 +497,14 @@
             this.showDataGridView.Name = "showDataGridView";
             this.showDataGridView.ReadOnly = true;
             this.showDataGridView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.showDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.showDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.showDataGridView.RowHeadersVisible = false;
             this.showDataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.showDataGridView.RowTemplate.Height = 25;
@@ -520,18 +535,7 @@
             this.showDataGridView.ThemeStyle.RowsStyle.Height = 25;
             this.showDataGridView.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(186)))), ((int)(((byte)(231)))));
             this.showDataGridView.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
-            // 
-            // SL
-            // 
-            this.SL.HeaderText = "SL";
-            this.SL.Name = "SL";
-            this.SL.ReadOnly = true;
-            // 
-            // Action
-            // 
-            this.Action.HeaderText = "Action";
-            this.Action.Name = "Action";
-            this.Action.ReadOnly = true;
+            this.showDataGridView.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.showDataGridView_RowPostPaint);
             // 
             // gunaPanel4
             // 
@@ -554,34 +558,72 @@
             this.gunaLabel5.TabIndex = 0;
             this.gunaLabel5.Text = "Available Customer";
             // 
-            // refreshButton
+            // SL
             // 
-            this.refreshButton.AnimationHoverSpeed = 0.07F;
-            this.refreshButton.AnimationSpeed = 0.03F;
-            this.refreshButton.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(181)))));
-            this.refreshButton.BorderColor = System.Drawing.Color.Black;
-            this.refreshButton.FocusedColor = System.Drawing.Color.Empty;
-            this.refreshButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.refreshButton.ForeColor = System.Drawing.Color.White;
-            this.refreshButton.Image = ((System.Drawing.Image)(resources.GetObject("refreshButton.Image")));
-            this.refreshButton.ImageSize = new System.Drawing.Size(20, 20);
-            this.refreshButton.Location = new System.Drawing.Point(731, 51);
-            this.refreshButton.Name = "refreshButton";
-            this.refreshButton.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(181)))));
-            this.refreshButton.OnHoverBorderColor = System.Drawing.Color.Black;
-            this.refreshButton.OnHoverForeColor = System.Drawing.Color.White;
-            this.refreshButton.OnHoverImage = null;
-            this.refreshButton.OnPressedColor = System.Drawing.Color.Black;
-            this.refreshButton.Size = new System.Drawing.Size(125, 28);
-            this.refreshButton.TabIndex = 8;
-            this.refreshButton.Text = "Refresh";
+            this.SL.HeaderText = "SL";
+            this.SL.Name = "SL";
+            this.SL.ReadOnly = true;
+            // 
+            // Action
+            // 
+            this.Action.HeaderText = "Action";
+            this.Action.Image = ((System.Drawing.Image)(resources.GetObject("Action.Image")));
+            this.Action.Name = "Action";
+            this.Action.ReadOnly = true;
+            this.Action.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Action.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // codeDataGridViewTextBoxColumn
+            // 
+            this.codeDataGridViewTextBoxColumn.DataPropertyName = "Code";
+            this.codeDataGridViewTextBoxColumn.HeaderText = "Code";
+            this.codeDataGridViewTextBoxColumn.Name = "codeDataGridViewTextBoxColumn";
+            this.codeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // addressDataGridViewTextBoxColumn
+            // 
+            this.addressDataGridViewTextBoxColumn.DataPropertyName = "Address";
+            this.addressDataGridViewTextBoxColumn.HeaderText = "Address";
+            this.addressDataGridViewTextBoxColumn.Name = "addressDataGridViewTextBoxColumn";
+            this.addressDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // contactDataGridViewTextBoxColumn
+            // 
+            this.contactDataGridViewTextBoxColumn.DataPropertyName = "Contact";
+            this.contactDataGridViewTextBoxColumn.HeaderText = "Contact";
+            this.contactDataGridViewTextBoxColumn.Name = "contactDataGridViewTextBoxColumn";
+            this.contactDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // emailDataGridViewTextBoxColumn
+            // 
+            this.emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
+            this.emailDataGridViewTextBoxColumn.HeaderText = "Email";
+            this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
+            this.emailDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // loyalityPointDataGridViewTextBoxColumn
+            // 
+            this.loyalityPointDataGridViewTextBoxColumn.DataPropertyName = "LoyalityPoint";
+            this.loyalityPointDataGridViewTextBoxColumn.HeaderText = "LoyalityPoint";
+            this.loyalityPointDataGridViewTextBoxColumn.Name = "loyalityPointDataGridViewTextBoxColumn";
+            this.loyalityPointDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // customerBindingSource
+            // 
+            this.customerBindingSource.DataSource = typeof(StockManagement.Model.Customer);
             // 
             // CustomerUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.refreshButton);
             this.Controls.Add(this.gunaPanel1);
             this.Controls.Add(this.gunaPanel2);
             this.Name = "CustomerUserControl";
@@ -595,6 +637,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.showDataGridView)).EndInit();
             this.gunaPanel4.ResumeLayout(false);
             this.gunaPanel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -619,11 +662,8 @@
         private Guna.UI.WinForms.GunaLabel gunaLabel3;
         private Guna.UI.WinForms.GunaTextBox searchTextBox;
         public Guna.UI.WinForms.GunaDataGridView showDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SL;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Action;
         private Guna.UI.WinForms.GunaPanel gunaPanel4;
         private Guna.UI.WinForms.GunaLabel gunaLabel5;
-        private Guna.UI.WinForms.GunaButton refreshButton;
         private System.Windows.Forms.Label contactErrorLabel;
         private System.Windows.Forms.Label emailErrorLabel;
         private System.Windows.Forms.Label label6;
@@ -632,5 +672,14 @@
         private Guna.UI.WinForms.GunaTextBox emailTextBox;
         private System.Windows.Forms.Label label8;
         private Guna.UI.WinForms.GunaTextBox loyalityPointTextBox;
+        private System.Windows.Forms.BindingSource customerBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SL;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn addressDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn contactDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn loyalityPointDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewImageColumn Action;
     }
 }
